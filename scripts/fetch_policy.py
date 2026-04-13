@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 """
-自动驾驶政策法规抓取脚本 - 精确版
+自动驾驶政策法规抓取脚本
 只抓取最近3个月的官方政策文件
 """
 
 import json
 import datetime
 import urllib.request
-import urllib.parse
 import re
 from pathlib import Path
 
@@ -38,7 +37,6 @@ def extract_date_from_text(text):
     patterns = [
         r"(\d{4})[年\-](\d{1,2})[月\-](\d{1,2})",
         r"(\d{4})\.(\d{1,2})\.(\d{1,2})",
-        r"发布日期[：:]\s*(\d{4})[年\-](\d{1,2})[月\-](\d{1,2})",
     ]
     
     for pattern in patterns:
@@ -68,28 +66,23 @@ def fetch_official_policy():
     """抓取官方政策文件"""
     updates = []
     
-    # 中国官方政策搜索
-    china_queries = [
-        "site:gov.cn 自动驾驶 政策 2025 2026",
-        "site:gov.cn 智能网联汽车 2025 2026",
-        "site:gov.cn 车路云 2025 2026",
-    ]
+    # 中国政策搜索 - 关键词组合
+    china_keywords = ["自动驾驶", "智能网联", "车路云", "L3自动驾驶", "L4自动驾驶", "无人驾驶"]
+    policy_keywords = ["政策", "条例", "办法", "要求", "细则", "实施", "法规", "通知", "意见", "规划"]
     
     print("🔍 搜索中国官方政策...")
-    for query in china_queries:
-        results = search_tavily(query, 15)
-        for r in results:
-            url = r.get("url", "")
-            title = r.get("title", "")
-            content = r.get("content", "")
-            
-            # 严格筛选政府域名
-            if any(domain in url for domain in [".gov.cn", "miit.gov.cn", "mot.gov.cn"]):
-                # 检查标题是否包含关键词
-                keywords = ["自动驾驶", "智能网联", "车路云", "L3", "L4", "无人驾驶", "智驾"]
-                if any(kw in title for kw in keywords):
-                    # 从content中提取日期
-                    date = extract_date_from_text(content[:2000])
+    for kw in china_keywords:
+        for pk in policy_keywords[:5]:  # 限制组合数量
+            query = f"site:gov.cn {kw} {pk} 2025 OR 2026"
+            results = search_tavily(query, 12)
+            for r in results:
+                url = r.get("url", "")
+                title = r.get("title", "")
+                content = r.get("content", "")
+                
+                # 检查是否是政府网站
+                if "gov.cn" in url or "miit.gov.cn" in url or "mot.gov.cn" in url:
+                    date = extract_date_from_text(content[:3000])
                     if date and is_recent_3_months(date):
                         updates.append({
                             "country": "中国",
@@ -99,24 +92,22 @@ def fetch_official_policy():
                             "date": date,
                         })
     
-    # 美国官方政策搜索
-    us_queries = [
-        "site:dot.gov autonomous vehicle 2025 2026",
-        "site:nhtsa.gov automated driving 2025 2026",
-    ]
+    # 美国政策搜索
+    us_keywords = ["autonomous vehicle", "self-driving", "automated driving", "robotaxi"]
+    us_policy = ["policy", "regulation", "guidelines", "rules", "act", "bill"]
     
     print("🔍 搜索美国官方政策...")
-    for query in us_queries:
-        results = search_tavily(query, 10)
-        for r in results:
-            url = r.get("url", "")
-            title = r.get("title", "")
-            content = r.get("content", "")
-            
-            if ".gov" in url:
-                keywords = ["autonomous", "self-driving", "automated", "AV", "robotaxi"]
-                if any(kw.lower() in title.lower() for kw in keywords):
-                    date = extract_date_from_text(content[:2000])
+    for kw in us_keywords:
+        for pk in us_policy[:3]:
+            query = f"site:.gov {kw} {pk} 2025 OR 2026"
+            results = search_tavily(query, 10)
+            for r in results:
+                url = r.get("url", "")
+                title = r.get("title", "")
+                content = r.get("content", "")
+                
+                if ".gov" in url:
+                    date = extract_date_from_text(content[:3000])
                     if date and is_recent_3_months(date):
                         updates.append({
                             "country": "美国",
