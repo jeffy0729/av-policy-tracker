@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
 自动驾驶政策法规抓取脚本 - 官方文件版
-只抓取政府部门官方发布的政策文件和法规
 """
 
 import json
@@ -10,6 +9,7 @@ import urllib.request
 import urllib.parse
 import re
 from pathlib import Path
+import time
 
 def search_tavily(query, max_results=10):
     """使用Tavily搜索"""
@@ -20,31 +20,29 @@ def search_tavily(query, max_results=10):
     }
     data = {
         "query": query,
-        "search_depth": "advanced",
-        "max_results": max_results,
-        "include_answer": True
+        "search_depth": "basic",
+        "max_results": max_results
     }
     
     try:
         req = urllib.request.Request(url, data=json.dumps(data).encode('utf-8'), headers=headers, method='POST')
         with urllib.request.urlopen(req, timeout=30) as response:
             result = json.loads(response.read().decode('utf-8'))
-            return result.get("results", []), result.get("answer", "")
+            return result.get("results", [])
     except Exception as e:
         print(f"Tavily搜索出错: {e}")
-        return [], ""
+        return []
 
-def extract_date_from_title(title):
-    """从标题中提取日期"""
-    # 匹配各种日期格式
+def extract_date_from_content(content):
+    """从内容中提取日期"""
     patterns = [
-        r"(\d{4})[年\-](\d{1,2})[月\-](\d{1,2})",  # 2026年4月13日
-        r"(\d{4})\.(\d{1,2})\.(\d{1,2})",  # 2026.4.13
-        r"(\d{4})-(\d{1,2})-(\d{1,2})",  # 2026-4-13
+        r"(\d{4})[年\-](\d{1,2})[月\-](\d{1,2})",
+        r"(\d{4})\.(\d{1,2})\.(\d{1,2})",
+        r"发布日期[：:]\s*(\d{4})[年\-](\d{1,2})[月\-](\d{1,2})",
     ]
     
     for pattern in patterns:
-        match = re.search(pattern, title)
+        match = re.search(pattern, content)
         if match:
             try:
                 year, month, day = int(match.group(1)), int(match.group(2)), int(match.group(3))
@@ -52,7 +50,7 @@ def extract_date_from_title(title):
                     return f"{year}-{month:02d}-{day:02d}"
             except:
                 pass
-    return datetime.date.today().isoformat()
+    return None
 
 def fetch_official_policy():
     """抓取官方政策文件"""
@@ -60,51 +58,52 @@ def fetch_official_policy():
     
     # 中国官方政策搜索
     china_queries = [
-        "site:gov.cn 自动驾驶 政策 2026",
-        "site:miit.gov.cn 智能网联汽车",
-        "site:mot.gov.cn 自动驾驶 法规",
+        "site:gov.cn 自动驾驶汽车 管理条例 2025 2026",
+        "site:miit.gov.cn 智能网联汽车 强制性标准",
+        "site:mot.gov.cn 自动驾驶 汽车运输安全 服务指南",
     ]
     
     print("🔍 搜索中国官方政策...")
     for query in china_queries:
-        results, answer = search_tavily(query, 8)
+        results = search_tavily(query, 10)
         for r in results:
             url = r.get("url", "")
-            if "gov.cn" in url or "miit.gov.cn" in url or "mot.gov.cn" in url:
-                title = r.get("title", "")
-                date = extract_date_from_title(title)
+            title = r.get("title", "")
+            content = r.get("content", "")
+            
+            # 严格筛选政府域名
+            if any(domain in url for domain in [".gov.cn", "miit.gov.cn", "mot.gov.cn"]):
+                date = extract_date_from_content(title + " " + content)
                 updates.append({
                     "country": "中国",
                     "source": extract_domain(url),
                     "url": url,
                     "title": title,
-                    "date": date,
-                    "type": "官方文件",
-                    "summary": answer[:200] if answer else ""
+                    "date": date or datetime.date.today().isoformat(),
                 })
     
     # 美国官方政策搜索
     us_queries = [
-        "site:dot.gov autonomous vehicle policy 2026",
-        "site:nhtsa.gov self-driving regulation",
+        "site:dot.gov autonomous vehicle guidelines 2025 2026",
+        "site:nhtsa.gov automated driving safety",
     ]
     
     print("🔍 搜索美国官方政策...")
     for query in us_queries:
-        results, answer = search_tavily(query, 5)
+        results = search_tavily(query, 8)
         for r in results:
             url = r.get("url", "")
-            if "dot.gov" in url or "nhtsa.gov" in url or ".gov" in url:
-                title = r.get("title", "")
-                date = extract_date_from_title(title)
+            title = r.get("title", "")
+            content = r.get("content", "")
+            
+            if ".gov" in url:
+                date = extract_date_from_content(title + " " + content)
                 updates.append({
                     "country": "美国",
                     "source": extract_domain(url),
                     "url": url,
                     "title": title,
-                    "date": date,
-                    "type": "官方文件",
-                    "summary": answer[:200] if answer else ""
+                    "date": date or datetime.date.today().isoformat(),
                 })
     
     # 去重
@@ -160,13 +159,11 @@ def generate_html(updates):
         .country-tag {{ padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500; }}
         .country-cn {{ background: #e74c3c; color: white; }}
         .country-us {{ background: #3498db; color: white; }}
-        .country-global {{ background: #9b59b6; color: white; }}
         .type-tag {{ padding: 4px 8px; border-radius: 8px; font-size: 11px; background: #27ae60; color: white; }}
         .date {{ color: #999; font-size: 13px; }}
         .card-title {{ font-size: 16px; font-weight: 600; margin-bottom: 8px; line-height: 1.5; }}
         .card-title a {{ color: #333; text-decoration: none; }}
         .card-title a:hover {{ color: #1a1a2e; }}
-        .card-summary {{ color: #666; font-size: 14px; line-height: 1.6; margin-bottom: 10px; padding: 10px; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #3498db; }}
         .card-source {{ color: #999; font-size: 13px; }}
         .empty-state {{ text-align: center; padding: 60px 20px; color: #999; }}
         footer {{ text-align: center; padding: 30px; color: #999; font-size: 13px; }}
@@ -181,7 +178,7 @@ def generate_html(updates):
             <div class="stats">
                 <div class="stat">
                     <div class="stat-number">{len(updates)}</div>
-                    <div class="stat-label">今日更新</div>
+                    <div class="stat-label">政策总数</div>
                 </div>
                 <div class="stat">
                     <div class="stat-number">{sum(1 for u in updates if u['country'] == '中国')}</div>
@@ -202,7 +199,7 @@ def generate_html(updates):
     if not updates:
         html += '''
         <div class="empty-state">
-            <p>今日暂无官方政策文件更新</p>
+            <p>暂无政策文件</p>
         </div>
 '''
     else:
@@ -218,11 +215,7 @@ def generate_html(updates):
 '''
         for u in updates:
             country_class = "country-cn" if u["country"] == "中国" else ("country-us" if u["country"] == "美国" else "country-global")
-            summary = u.get("summary", "")
-            if summary:
-                summary_html = f'<div class="card-summary">{summary}</div>'
-            else:
-                summary_html = ""
+            date_display = u.get("date", "") or "未知日期"
             html += f'''
             <div class="update-card" data-country="{u['country']}">
                 <div class="card-header">
@@ -230,12 +223,11 @@ def generate_html(updates):
                         <span class="country-tag {country_class}">{u['country']}</span>
                         <span class="type-tag">📄 官方文件</span>
                     </div>
-                    <span class="date">{u['date']}</span>
+                    <span class="date">{date_display}</span>
                 </div>
                 <div class="card-title">
                     <a href="{u['url']}" target="_blank">{u['title']}</a>
                 </div>
-                {summary_html}
                 <div class="card-source">来源：{u['source']}</div>
             </div>
 '''
