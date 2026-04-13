@@ -117,11 +117,14 @@ def fetch_official_policy():
                             "date": date,
                         })
     
-    # 去重
+    # 去重 + 过滤航空器
     seen = set()
     unique_updates = []
     for u in updates:
         key = u["url"]
+        # 过滤掉航空器相关
+        if "航空器" in u["title"]:
+            continue
         if key not in seen:
             seen.add(key)
             unique_updates.append(u)

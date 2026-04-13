@@ -8,17 +8,10 @@
   },
   {
     "country": "中国",
-    "source": "caac.gov.cn",
-    "url": "http://www.caac.gov.cn/PHONE/XXGK_17/XXGK/SYZCFBJD/202601/P020260120455426320804.pdf",
-    "title": "民用无人驾驶航空器系统",
-    "date": "2026-05-01"
-  },
-  {
-    "country": "中国",
-    "source": "mps.gov.cn:9080",
-    "url": "http://www.mps.gov.cn:9080/n2256342/n6594994/c10434566/content.html",
-    "title": "北京出台无人驾驶航空器管理规定",
-    "date": "2026-04-30"
+    "source": "zs.gov.cn",
+    "url": "https://www.zs.gov.cn/zsjxj/gkmlpt/content/2/2582/post_2582830.html",
+    "title": "【文字解读】中山市智能网联汽车道路测试与示范应用实施细则 ...",
+    "date": "2026-12-31"
   },
   {
     "country": "中国",
@@ -32,13 +25,6 @@
     "source": "gaj.beijing.gov.cn",
     "url": "https://gaj.beijing.gov.cn/wsgs/2024zcwj/zcfg/202603/t20260330_4569738.html",
     "title": "政策法规_北京市公安局",
-    "date": "2026-03-27"
-  },
-  {
-    "country": "中国",
-    "source": "flk.npc.gov.cn",
-    "url": "https://flk.npc.gov.cn/detail?id=ff8081819cf9f588019d6b2210797d0e&fileId=&type=&title=%E5%8C%97%E4%BA%AC%E5%B8%82%E6%97%A0%E4%BA%BA%E9%A9%BE%E9%A9%B6%E8%88%AA%E7%A9%BA%E5%99%A8%E7%AE%A1%E7%90%86%E8%A7%84%E5%AE%9A",
-    "title": "北京市无人驾驶航空器管理规定",
     "date": "2026-03-27"
   },
   {
@@ -58,30 +44,16 @@
   {
     "country": "中国",
     "source": "caac.gov.cn",
-    "url": "http://www.caac.gov.cn/XXGK/XXGK/GFXWJ/202602/t20260202_229945.html",
-    "title": "基于计算机的民用无人驾驶航空器运行控制系统管理办法",
-    "date": "2026-03-19"
-  },
-  {
-    "country": "中国",
-    "source": "caac.gov.cn",
-    "url": "https://www.caac.gov.cn/XXGK/XXGK/FLFG/202401/t20240115_222642.html",
-    "title": "无人驾驶航空器飞行管理暂行条例",
-    "date": "2026-03-18"
-  },
-  {
-    "country": "中国",
-    "source": "caac.gov.cn",
-    "url": "https://www.caac.gov.cn/XXGK/XXGK/GFXWJ/202506/t20250605_227657.html",
-    "title": "民用无人驾驶航空器事件信息管理办法",
-    "date": "2026-03-18"
-  },
-  {
-    "country": "中国",
-    "source": "caac.gov.cn",
     "url": "http://www.caac.gov.cn/XWZX/MHYW/202512/t20251222_229506.html",
     "title": "民航局发布两项无人机强制性国家标准",
     "date": "2026-03-17"
+  },
+  {
+    "country": "中国",
+    "source": "kjj.gz.gov.cn",
+    "url": "http://kjj.gz.gov.cn/xwlb/yw/content/post_10711839.html",
+    "title": "广州市科学技术局网站",
+    "date": "2026-03-05"
   },
   {
     "country": "中国",
@@ -120,13 +92,6 @@
   },
   {
     "country": "中国",
-    "source": "gaj.sh.gov.cn",
-    "url": "https://gaj.sh.gov.cn/shga/wzXxfbGj/detail?pa=f41aa3d5accbfad14fcbf784730c1c7f0c16683653e0ed4cbfe3bde8930329d3393ff02f0379e6852f9ea1513f8ce716f89cd8d0bb43e938",
-    "title": "《上海市民用无人驾驶航空器飞行安全管理暂行办法》2月1日 ...",
-    "date": "2026-02-01"
-  },
-  {
-    "country": "中国",
     "source": "std.samr.gov.cn",
     "url": "https://std.samr.gov.cn/gb/search/gbDetailed?id=49FD1852CA74C31FE06397BE0A0A1304",
     "title": "国家标准 - 全国标准信息公共服务平台",
@@ -141,16 +106,16 @@
   },
   {
     "country": "中国",
-    "source": "open.beijing.gov.cn",
-    "url": "https://open.beijing.gov.cn/html//szfgb/2026/1/1769396926822.html",
-    "title": "开放北京",
-    "date": "2026-01-23"
-  },
-  {
-    "country": "中国",
     "source": "sheitc.sh.gov.cn",
     "url": "https://www.sheitc.sh.gov.cn/cyfz/20260114/4144de4a013240ba8282558c09514639.html",
     "title": "上海市经济和信息化委员会上海市交通委员会上海市公安局 ...",
     "date": "2026-01-14"
+  },
+  {
+    "country": "中国",
+    "source": "open.beijing.gov.cn",
+    "url": "https://open.beijing.gov.cn/html//kfdt/sddt/2026/1/1768961988078.html",
+    "title": "开放北京",
+    "date": "2026-01-13"
   }
 ]
