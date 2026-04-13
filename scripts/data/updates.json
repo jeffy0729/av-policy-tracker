@@ -1,121 +1,429 @@
 [
   {
-    "country": "中国",
-    "source": "std.samr.gov.cn",
-    "url": "https://std.samr.gov.cn/gb/search/gbDetailed?id=473DB2F0DC56BDA1E06397BE0A0AB1B7",
-    "title": "国家标准计划 - 全国标准信息公共服务平台",
-    "date": "2027-07-01"
+    "country": "美国",
+    "source": "crowell.com",
+    "url": "https://www.crowell.com/en/insights/client-alerts/summer-2025-autonomous-vehicle-developments",
+    "title": "Summer 2025 Autonomous Vehicle Developments | Crowell & Moring LLP",
+    "date": "2025-01-01"
   },
   {
-    "country": "中国",
-    "source": "zs.gov.cn",
-    "url": "https://www.zs.gov.cn/zsjxj/gkmlpt/content/2/2582/post_2582830.html",
-    "title": "【文字解读】中山市智能网联汽车道路测试与示范应用实施细则 ...",
-    "date": "2026-12-31"
+    "country": "美国",
+    "source": "saferoads.org",
+    "url": "https://saferoads.org/2025-nhtsa-av-framework-statement/",
+    "title": "Statement on New Automated Vehicle Framework Announced ...",
+    "date": "2025-01-01"
   },
   {
-    "country": "中国",
-    "source": "yantai.gov.cn",
-    "url": "https://www.yantai.gov.cn/col/col43370/art/2026/art_49a21d7eb8374c07bf56009d6b8bd29a.html?type=FUaRhQW7Lo9974tywtQmQ",
-    "title": "文字解读丨《烟台市低速自动驾驶装备道路测试与商业示范管理实施细则（试行）》",
-    "date": "2026-03-27"
+    "country": "美国",
+    "source": "enotrans.org",
+    "url": "https://enotrans.org/article/2025-autonomous-vehicles-federal-policy-wrapped/",
+    "title": "2025 Autonomous Vehicles Federal Policy Wrapped",
+    "date": "2025-01-01"
   },
   {
-    "country": "中国",
-    "source": "gaj.beijing.gov.cn",
-    "url": "https://gaj.beijing.gov.cn/wsgs/2024zcwj/zcfg/202603/t20260330_4569738.html",
-    "title": "政策法规_北京市公安局",
-    "date": "2026-03-27"
+    "country": "美国",
+    "source": "federalregister.gov",
+    "url": "https://www.federalregister.gov/documents/2025/09/19/2025-18220/nhtsa-safety-research-portfolio-public-meeting-fall-2025-and-public-workshop-on-automated-driving",
+    "title": "Federal Register :: NHTSA Safety Research Portfolio Public Meeting: Fall 2025 and Public Workshop on Automated Driving Systems",
+    "date": "2025-01-01"
   },
   {
-    "country": "中国",
-    "source": "yantai.gov.cn",
-    "url": "https://www.yantai.gov.cn/col/col99956/art/2026/art_77c4e1d1a32f447db1034e195600d46d.html",
-    "title": "烟台市工业和信息化局关于印发《烟台市低速自动驾驶装备道路测试与商业示范管理实施细则（试行）》的通知",
-    "date": "2026-03-24"
+    "country": "美国",
+    "source": "nhtsa.gov",
+    "url": "https://www.nhtsa.gov/sites/nhtsa.gov/files/2025-07/report-congress-research-rulemaking-automated-driving-systems-july-2025-tag.pdf",
+    "title": "[PDF] report-congress-research-rulemaking-automated-driving ... - NHTSA",
+    "date": "2025-01-01"
   },
   {
-    "country": "中国",
-    "source": "commerce.shandong.gov.cn",
-    "url": "http://commerce.shandong.gov.cn/art/2026/3/23/art_250176_10365090.html",
-    "title": "山东省商务厅 预警信息 联合国通过自动驾驶系统全球法规草案",
-    "date": "2026-03-23"
+    "country": "美国",
+    "source": "nhtsa.gov",
+    "url": "https://www.nhtsa.gov/vehicle-safety/automated-vehicles-safety",
+    "title": "Automated Vehicle Safety - NHTSA",
+    "date": "2025-01-01"
   },
   {
-    "country": "中国",
-    "source": "caac.gov.cn",
-    "url": "http://www.caac.gov.cn/XWZX/MHYW/202512/t20251222_229506.html",
-    "title": "民航局发布两项无人机强制性国家标准",
-    "date": "2026-03-17"
+    "country": "美国",
+    "source": "nhtsa.gov",
+    "url": "https://www.nhtsa.gov/sites/nhtsa.gov/files/2025-04/automated-vehicle-exemption-program-domestic-exemptions-2025.pdf",
+    "title": "automated-vehicle-exemption-program-domestic- ...",
+    "date": "2025-01-01"
   },
   {
-    "country": "中国",
-    "source": "kjj.gz.gov.cn",
-    "url": "http://kjj.gz.gov.cn/xwlb/yw/content/post_10711839.html",
-    "title": "广州市科学技术局网站",
-    "date": "2026-03-05"
+    "country": "美国",
+    "source": "nhtsa.gov",
+    "url": "https://www.nhtsa.gov/press-releases/av-framework-plan-modernize-safety-standards",
+    "title": "Trump's Transportation Secretary Sean P. Duffy Advances AV ...",
+    "date": "2025-01-01"
   },
   {
-    "country": "中国",
-    "source": "fairtrade.sww.sh.gov.cn",
-    "url": "https://fairtrade.sww.sh.gov.cn/taa/action/Important_view?subCategory.id=2&news.id=14798",
-    "title": "欧盟修订自动驾驶系统型式认证规则",
-    "date": "2026-03-03"
+    "country": "美国",
+    "source": "nhtsa.gov",
+    "url": "https://www.nhtsa.gov/press-releases/modernizing-safety-standards-for-automated-vehicles",
+    "title": "NHTSA Releases Multi-Year Research Project on Modernizing ...",
+    "date": "2025-01-01"
   },
   {
-    "country": "中国",
-    "source": "gxj.nantong.gov.cn",
-    "url": "https://gxj.nantong.gov.cn/ntsjxw/bmwj/content/ea027a2f-66cf-4f9f-a987-029ef5884bbe.html",
-    "title": "关于印发《南通市智能网联汽车道路测试和 示范应用管理实施细则（试行）》的通知 - 部门文件",
-    "date": "2026-02-28"
+    "country": "美国",
+    "source": "nhtsa.gov",
+    "url": "https://www.nhtsa.gov/press-releases/nhtsa-issues-first-ever-demonstration-exemption-american-built-automated-vehicles",
+    "title": "NHTSA Issues First-Ever Demonstration Exemption to ...",
+    "date": "2025-01-01"
   },
   {
-    "country": "中国",
-    "source": "policy.mofcom.gov.cn",
-    "url": "https://policy.mofcom.gov.cn/claw/opinionInfo.shtml?id=6772",
-    "title": "公开征求《智能网联汽车自动驾驶系统安全要求》等五项强制性国家 ...",
-    "date": "2026-02-26"
+    "country": "美国",
+    "source": "en.wikipedia.org",
+    "url": "https://en.wikipedia.org/wiki/Regulation_of_self-driving_cars",
+    "title": "Regulation of self-driving cars - Wikipedia",
+    "date": "2025-01-01"
   },
   {
-    "country": "中国",
-    "source": "jiangmen.gov.cn",
-    "url": "http://www.jiangmen.gov.cn/bmpd/jmsgxhzls/zcfgyjd/content/post_3445438.html",
-    "title": "【媒体解读】广东出台14条举措布局“AI+交通” 未来两三年交通将迎来AI应用落地爆发期 六市试点智能网联汽车路测互认_政策解读_江门市供销合作联社",
-    "date": "2026-02-14"
+    "country": "美国",
+    "source": "wired.com",
+    "url": "https://www.wired.com/story/proposed-legislation-self-driving-cars-in-new-york-state/",
+    "title": "New Proposed Legislation Would Let Self-Driving Cars Operate in ...",
+    "date": "2025-01-01"
   },
   {
-    "country": "中国",
-    "source": "sheitc.sh.gov.cn",
-    "url": "https://sheitc.sh.gov.cn/dsxxjyzl/20260204/899ebd1108fc4271af362a433be901bb.html",
-    "title": "【年度盘点】2025年上海智能网联新能源汽车产业发展十件大事",
-    "date": "2026-02-04"
+    "country": "美国",
+    "source": "electrek.co",
+    "url": "https://electrek.co/2026/03/25/california-regulator-confirms-tesla-not-operating-autonomous-vehicle-service/",
+    "title": "California regulator confirms Tesla is 'not operating an autonomous ...",
+    "date": "2025-01-01"
   },
   {
-    "country": "中国",
-    "source": "std.samr.gov.cn",
-    "url": "https://std.samr.gov.cn/gb/search/gbDetailed?id=49FD1852CA74C31FE06397BE0A0A1304",
-    "title": "国家标准 - 全国标准信息公共服务平台",
-    "date": "2026-01-28"
+    "country": "美国",
+    "source": "sites.psu.edu",
+    "url": "https://sites.psu.edu/jlia/autonomous-rideshare-vehicles/",
+    "title": "The Case for Federal Regulation of Autonomous Rideshare Vehicles",
+    "date": "2025-01-01"
   },
   {
-    "country": "中国",
-    "source": "openstd.samr.gov.cn",
-    "url": "https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=F1D96EE9F6E84D109F1AC57BDF7A1412",
-    "title": "GB/T 47025-2026 - 国家标准全文公开",
-    "date": "2026-01-28"
+    "country": "美国",
+    "source": "urbansdk.com",
+    "url": "https://www.urbansdk.com/resources/the-current-state-of-self-driving-car-regulations-in-the-u-s",
+    "title": "The Current State of Self-Driving Car Regulations in the U.S.",
+    "date": "2025-01-01"
   },
   {
-    "country": "中国",
-    "source": "sheitc.sh.gov.cn",
-    "url": "https://www.sheitc.sh.gov.cn/cyfz/20260114/4144de4a013240ba8282558c09514639.html",
-    "title": "上海市经济和信息化委员会上海市交通委员会上海市公安局 ...",
-    "date": "2026-01-14"
+    "country": "美国",
+    "source": "reuters.com",
+    "url": "https://www.reuters.com/world/us-house-panel-consider-legislation-that-could-speed-self-driving-car-deployment-2026-01-06/",
+    "title": "US House panel to consider legislation that could speed self-driving ...",
+    "date": "2025-01-01"
   },
   {
-    "country": "中国",
-    "source": "open.beijing.gov.cn",
-    "url": "https://open.beijing.gov.cn/html//kfdt/sddt/2026/1/1768961988078.html",
-    "title": "开放北京",
-    "date": "2026-01-13"
+    "country": "美国",
+    "source": "marketplace.org",
+    "url": "https://www.marketplace.org/story/2026/02/19/selfdriving-cars-may-face-federal-regulation",
+    "title": "Congress debates federal regulation on self-driving cars - Marketplace",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "美国",
+    "source": "foxnews.com",
+    "url": "https://www.foxnews.com/politics/congress-moves-set-national-rules-self-driving-cars-overriding-states",
+    "title": "House committee passes SELF DRIVE Act for autonomous vehicles",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "美国",
+    "source": "transportation.gov",
+    "url": "https://www.transportation.gov/AV",
+    "title": "USDOT Automated Vehicles Activities - Department of Transportation",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "美国",
+    "source": "scientificamerican.com",
+    "url": "https://www.scientificamerican.com/article/self-driving-cars-have-new-rules-in-the-u-s-heres-why-that-matters/",
+    "title": "Self-Driving Cars Have New Rules in the U.S. Here’s Why That Matters | Scientific American",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "美国",
+    "source": "ucs.org",
+    "url": "https://www.ucs.org/resources/self-driving-cars-101",
+    "title": "Self-Driving Cars Explained - Union of Concerned Scientists",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "美国",
+    "source": "autonocion.com",
+    "url": "https://www.autonocion.com/us/us-national-safety-standards-waymo/",
+    "title": "House committee advances SELF DRIVE Act to set federal safety ...",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "美国",
+    "source": "oklahomavoice.com",
+    "url": "https://oklahomavoice.com/2025/08/13/with-more-self-driving-cars-on-the-road-states-put-more-rules-in-place/",
+    "title": "With more self-driving cars on the road, states put more rules in place",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "美国",
+    "source": "ncsl.org",
+    "url": "https://www.ncsl.org/transportation/autonomous-vehicles",
+    "title": "Autonomous Vehicles | Self-Driving Vehicles Enacted Legislation",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "美国",
+    "source": "highways.dot.gov",
+    "url": "https://highways.dot.gov/automation",
+    "title": "Automated Vehicle Activities and Resources | FHWA",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "美国",
+    "source": "autobodynews.com",
+    "url": "https://www.autobodynews.com/news/nhtsa-begins-review-of-federal-safety-standards-for-automated-vehicles",
+    "title": "NHTSA Begins Review of Federal Safety Standards for Automated ...",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "美国",
+    "source": "act-news.com",
+    "url": "https://www.act-news.com/news/congress-formalizes-av-framework/",
+    "title": "Congress Formalizes Autonomous Vehicle Framework - ACT News",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "美国",
+    "source": "ghsa.org",
+    "url": "https://www.ghsa.org/state-laws-issues/autonomous-vehicles",
+    "title": "Autonomous Vehicles | Governors Highway Safety Association",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "美国",
+    "source": "congress.gov",
+    "url": "https://www.congress.gov/bill/119th-congress/senate-bill/1798/text",
+    "title": "S.1798 - Autonomous Vehicle Acceleration Act of 2025 119th ...",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "taylorwessing.com",
+    "url": "https://www.taylorwessing.com/en/insights-and-events/insights/2026/02/legal-frameworks-for-autonomous-driving-and-teledriving",
+    "title": "Legal framework for automated and autonomous driving and ...",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "connectedautomateddriving.eu",
+    "url": "https://www.connectedautomateddriving.eu/regulation-and-policies/",
+    "title": "Regulations and Policies - Connected Automated Driving",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "single-market-economy.ec.europa.eu",
+    "url": "https://single-market-economy.ec.europa.eu/sectors/automotive-industry/vehicle-safety-and-automatedconnected-vehicles_en",
+    "title": "Vehicle safety and automated/connected vehicles",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "cdn.digitaleurope.org",
+    "url": "https://cdn.digitaleurope.org/uploads/2025/05/Embracing-the-future-of-mobility-DIGITALEUROPE.pdf",
+    "title": "[PDF] a strategy for autonomous driving in the EU - DigitalEurope",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "urbansdk.com",
+    "url": "https://www.urbansdk.com/resources/how-different-countries-are-regulating-autonomous-vehicles",
+    "title": "How Different Countries are Regulating Autonomous Vehicles",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "tuvsud.com",
+    "url": "https://www.tuvsud.com/-/jssmedia/global/pdf-files/whitepaper-report-e-books/tuvsud-automated-driving-legal-status.pdf",
+    "title": "[PDF] Highly automated driving - An overview of the current state of ...",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "sciencedirect.com",
+    "url": "https://www.sciencedirect.com/science/article/pii/S2352146523006257",
+    "title": "Safety Approval of Automated Vehicles in the EU - ScienceDirect.com",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "volvoautonomoussolutions.com",
+    "url": "https://www.volvoautonomoussolutions.com/en-en/news-and-insights/stories/2025/nov/eu-ai-act-explained-how-europe-s-new-ai-regulations-will-affect-autonomous-transport.html",
+    "title": "EU AI Act explained: How Europe's new AI regulations will affect ...",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "unece.org",
+    "url": "https://unece.org/sustainable-development/press/un-announces-global-regulation-facilitate-safe-introduction-self",
+    "title": "UN announces a global regulation to facilitate safe introduction of ...",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "reuters.com",
+    "url": "https://www.reuters.com/business/autos-transportation/britain-sets-out-roadmap-self-driving-vehicle-usage-by-2025-2022-08-19/",
+    "title": "Britain sets out roadmap for self driving vehicle usage by 2025",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "commonslibrary.parliament.uk",
+    "url": "https://commonslibrary.parliament.uk/research-briefings/cdp-2025-0201/",
+    "title": "Connected and autonomous vehicles - House of Commons Library",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "theguardian.com",
+    "url": "https://www.theguardian.com/news/ng-interactive/2025/oct/18/driverless-cars-uk-autonomy-waymo-london",
+    "title": "Driverless cars are coming to the UK – but the road to autonomy has ...",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "reddit.com",
+    "url": "https://www.reddit.com/r/TeslaUK/comments/1czs5cg/selfdriving_in_uk_from_2026/",
+    "title": "Self-Driving in UK from 2026? : r/TeslaUK - Reddit",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "confused.com",
+    "url": "https://www.confused.com/compare-car-insurance/guides/driverless-cars",
+    "title": "Driverless cars on UK roads by 2026 - Confused.com",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "gov.uk",
+    "url": "https://www.gov.uk/government/news/next-step-on-the-uk-rollout-of-self-driving-vehicles-as-public-charities-and-businesses-asked-for-their-views",
+    "title": "Next step on the UK rollout of self-driving vehicles as public ...",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "mobileye.com",
+    "url": "https://www.mobileye.com/news/germany-level-4-autonomous-vehicle-law-regulations/",
+    "title": "Germany Opens Roads to Autonomous Vehicles | Mobileye Blog",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "pmc.ncbi.nlm.nih.gov",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8979579/",
+    "title": "The German Act on Autonomous Driving: Why Ethics ... - PMC",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "group.mercedes-benz.com",
+    "url": "https://group.mercedes-benz.com/technology/autonomous-driving/driving/legal-framework.html",
+    "title": "Automated and Autonomous Driving. Legal Framework.",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "auto2xtech.com",
+    "url": "https://auto2xtech.com/nautonomous-driving-regulation-l4-future-mobility/?srsltid=AfmBOor-v0qim_YVIQYS1IG_xbtAUZeRkAmLxsiEXWaNheIMkmYn4IKE",
+    "title": "Autonomous Driving regulation L4 allows driverless vehicles",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "kba.de",
+    "url": "https://www.kba.de/EN/Themen_en/Marktueberwachung_en/Produktpruefungen_en/AutomatisiertesAutonomesFahren_en/Gesetzgebung_en/gesetzgebung_autonomes_fahren_node_en.html",
+    "title": "Legislation on Autonomous Driving - Kraftfahrt-Bundesamt",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "dw.com",
+    "url": "https://www.dw.com/en/germanys-bid-to-lead-in-autonomous-driving-faces-roadblocks/a-74067986",
+    "title": "Germany's bid to lead in autonomous driving faces roadblocks",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "connectedautomateddriving.eu",
+    "url": "https://www.connectedautomateddriving.eu/regulation-and-policies/national-level/eu/germany/",
+    "title": "Germany - Connected Automated Driving",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "bmv.de",
+    "url": "https://www.bmv.de/SharedDocs/EN/publications/strategy-for-autonomous-driving.pdf?__blob=publicationFile",
+    "title": "[PDF] The Future of Driving is Autonomous - BMV",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "cms.law",
+    "url": "https://cms.law/en/int/expert-guides/cms-expert-guide-to-autonomous-vehicles-avs/germany",
+    "title": "Expert Guide: Autonomous Vehicles Law in Germany",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "europarl.europa.eu",
+    "url": "https://www.europarl.europa.eu/erpl-app-public/factsheets/pdf/en/FTU_4.3.2.pdf",
+    "title": "Audiovisual and media policy - European Parliament",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "medium.com",
+    "url": "https://medium.com/chamber-of-progress/what-european-policymakers-need-to-do-next-to-unleash-autonomous-vehicles-ba5a3f001fba",
+    "title": "What European Policymakers Need to Do Next to Unleash ...",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "automotiveworld.com",
+    "url": "https://www.automotiveworld.com/articles/european-regulations-av-roadblock-or-accelerator/",
+    "title": "European regulations: AV roadblock or accelerator?",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "jasic.org",
+    "url": "https://www.jasic.org/check/html/j/14_innovation-technology/pdf/automated-driving-3/sympo7.pdf",
+    "title": "Current status of AV Regulation in Europe",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "digital-strategy.ec.europa.eu",
+    "url": "https://digital-strategy.ec.europa.eu/en/policies/media-and-audiovisual-action-plan",
+    "title": "European Media and Audiovisual Action Plan | Shaping Europe’s digital future",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "digital-strategy.ec.europa.eu",
+    "url": "https://digital-strategy.ec.europa.eu/en/policies/general-principles-avmsd",
+    "title": "Audiovisual Media Services Directive - general principles",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "connectedautomateddriving.eu",
+    "url": "https://www.connectedautomateddriving.eu/regulation-and-policies/eu-level/",
+    "title": "EU-Level - Connected Automated Driving",
+    "date": "2025-01-01"
+  },
+  {
+    "country": "欧洲",
+    "source": "sciencedirect.com",
+    "url": "https://www.sciencedirect.com/science/article/pii/S259019822500209X",
+    "title": "Scenarios for the deployment of automated vehicles in ...",
+    "date": "2025-01-01"
   }
 ]
