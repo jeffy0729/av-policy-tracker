@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-自动驾驶政策法规抓取脚本 - 官方文件版
+自动驾驶政策法规抓取脚本 - 精确版
+只抓取最近3个月的官方政策文件
 """
 
 import json
@@ -9,9 +10,8 @@ import urllib.request
 import urllib.parse
 import re
 from pathlib import Path
-import time
 
-def search_tavily(query, max_results=10):
+def search_tavily(query, max_results=15):
     """使用Tavily搜索"""
     url = "https://api.tavily.com/search"
     headers = {
@@ -33,8 +33,8 @@ def search_tavily(query, max_results=10):
         print(f"Tavily搜索出错: {e}")
         return []
 
-def extract_date_from_content(content):
-    """从内容中提取日期"""
+def extract_date_from_text(text):
+    """从文本中提取日期"""
     patterns = [
         r"(\d{4})[年\-](\d{1,2})[月\-](\d{1,2})",
         r"(\d{4})\.(\d{1,2})\.(\d{1,2})",
@@ -42,7 +42,7 @@ def extract_date_from_content(content):
     ]
     
     for pattern in patterns:
-        match = re.search(pattern, content)
+        match = re.search(pattern, text)
         if match:
             try:
                 year, month, day = int(match.group(1)), int(match.group(2)), int(match.group(3))
@@ -52,20 +52,32 @@ def extract_date_from_content(content):
                 pass
     return None
 
+def is_recent_3_months(date_str):
+    """检查日期是否在最近3个月内"""
+    if not date_str:
+        return False
+    try:
+        date = datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
+        today = datetime.date.today()
+        three_months_ago = today - datetime.timedelta(days=90)
+        return date >= three_months_ago
+    except:
+        return False
+
 def fetch_official_policy():
     """抓取官方政策文件"""
     updates = []
     
     # 中国官方政策搜索
     china_queries = [
-        "site:gov.cn 自动驾驶汽车 管理条例 2025 2026",
-        "site:miit.gov.cn 智能网联汽车 强制性标准",
-        "site:mot.gov.cn 自动驾驶 汽车运输安全 服务指南",
+        "site:gov.cn 自动驾驶 政策 2025 2026",
+        "site:gov.cn 智能网联汽车 2025 2026",
+        "site:gov.cn 车路云 2025 2026",
     ]
     
     print("🔍 搜索中国官方政策...")
     for query in china_queries:
-        results = search_tavily(query, 10)
+        results = search_tavily(query, 15)
         for r in results:
             url = r.get("url", "")
             title = r.get("title", "")
@@ -73,38 +85,46 @@ def fetch_official_policy():
             
             # 严格筛选政府域名
             if any(domain in url for domain in [".gov.cn", "miit.gov.cn", "mot.gov.cn"]):
-                date = extract_date_from_content(title + " " + content)
-                updates.append({
-                    "country": "中国",
-                    "source": extract_domain(url),
-                    "url": url,
-                    "title": title,
-                    "date": date or datetime.date.today().isoformat(),
-                })
+                # 检查标题是否包含关键词
+                keywords = ["自动驾驶", "智能网联", "车路云", "L3", "L4", "无人驾驶", "智驾"]
+                if any(kw in title for kw in keywords):
+                    # 从content中提取日期
+                    date = extract_date_from_text(content[:2000])
+                    if date and is_recent_3_months(date):
+                        updates.append({
+                            "country": "中国",
+                            "source": extract_domain(url),
+                            "url": url,
+                            "title": title,
+                            "date": date,
+                        })
     
     # 美国官方政策搜索
     us_queries = [
-        "site:dot.gov autonomous vehicle guidelines 2025 2026",
-        "site:nhtsa.gov automated driving safety",
+        "site:dot.gov autonomous vehicle 2025 2026",
+        "site:nhtsa.gov automated driving 2025 2026",
     ]
     
     print("🔍 搜索美国官方政策...")
     for query in us_queries:
-        results = search_tavily(query, 8)
+        results = search_tavily(query, 10)
         for r in results:
             url = r.get("url", "")
             title = r.get("title", "")
             content = r.get("content", "")
             
             if ".gov" in url:
-                date = extract_date_from_content(title + " " + content)
-                updates.append({
-                    "country": "美国",
-                    "source": extract_domain(url),
-                    "url": url,
-                    "title": title,
-                    "date": date or datetime.date.today().isoformat(),
-                })
+                keywords = ["autonomous", "self-driving", "automated", "AV", "robotaxi"]
+                if any(kw.lower() in title.lower() for kw in keywords):
+                    date = extract_date_from_text(content[:2000])
+                    if date and is_recent_3_months(date):
+                        updates.append({
+                            "country": "美国",
+                            "source": extract_domain(url),
+                            "url": url,
+                            "title": title,
+                            "date": date,
+                        })
     
     # 去重
     seen = set()
@@ -117,6 +137,8 @@ def fetch_official_policy():
     
     # 按日期排序
     unique_updates.sort(key=lambda x: x["date"], reverse=True)
+    
+    print(f"✅ 找到 {len(unique_updates)} 条符合条件的政策")
     
     return unique_updates
 
@@ -174,7 +196,7 @@ def generate_html(updates):
     <div class="container">
         <header>
             <h1>🚗 自动驾驶政策法规最新动态</h1>
-            <div class="subtitle">中国政府网 | 交通运输部 | 工信部 | 美国交通部 | 官方政策文件</div>
+            <div class="subtitle">最近3个月 | 中国政府网 | 交通运输部 | 工信部 | 美国交通部 | 官方政策文件</div>
             <div class="stats">
                 <div class="stat">
                     <div class="stat-number">{len(updates)}</div>
@@ -188,10 +210,6 @@ def generate_html(updates):
                     <div class="stat-number">{sum(1 for u in updates if u['country'] == '美国')}</div>
                     <div class="stat-label">美国</div>
                 </div>
-                <div class="stat">
-                    <div class="stat-number">{sum(1 for u in updates if u['country'] == '全球')}</div>
-                    <div class="stat-label">全球</div>
-                </div>
             </div>
         </header>
 '''
@@ -199,7 +217,7 @@ def generate_html(updates):
     if not updates:
         html += '''
         <div class="empty-state">
-            <p>暂无政策文件</p>
+            <p>暂无最近3个月的政策文件</p>
         </div>
 '''
     else:
@@ -208,13 +226,12 @@ def generate_html(updates):
             <button class="filter-btn active" data-filter="all">全部</button>
             <button class="filter-btn" data-filter="中国">中国</button>
             <button class="filter-btn" data-filter="美国">美国</button>
-            <button class="filter-btn" data-filter="全球">全球</button>
         </div>
         
         <div class="update-list">
 '''
         for u in updates:
-            country_class = "country-cn" if u["country"] == "中国" else ("country-us" if u["country"] == "美国" else "country-global")
+            country_class = "country-cn" if u["country"] == "中国" else "country-us"
             date_display = u.get("date", "") or "未知日期"
             html += f'''
             <div class="update-card" data-country="{u['country']}">
@@ -281,15 +298,13 @@ def main():
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(html)
     
-    print(f"✅ 已生成 {output_path}, 共 {len(updates)} 条官方政策更新")
+    print(f"✅ 已生成 {output_path}")
     
     # 保存JSON数据
     data_path = Path(__file__).parent / "data" / "updates.json"
     data_path.parent.mkdir(exist_ok=True)
     with open(data_path, "w", encoding="utf-8") as f:
         json.dump(updates, f, ensure_ascii=False, indent=2)
-    
-    print(f"✅ 已保存数据到 {data_path}")
     
     return updates
 
