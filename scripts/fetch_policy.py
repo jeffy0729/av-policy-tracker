@@ -66,15 +66,15 @@ def fetch_official_policy():
     """抓取官方政策文件"""
     updates = []
     
-    # 中国政策搜索 - 关键词组合
-    china_keywords = ["自动驾驶", "智能网联", "车路云", "L3自动驾驶", "L4自动驾驶", "无人驾驶"]
-    policy_keywords = ["政策", "条例", "办法", "要求", "细则", "实施", "法规", "通知", "意见", "规划"]
+    # 中国政策搜索 - 更广泛的关键词组合
+    china_keywords = ["自动驾驶", "智能网联", "车路云", "L3自动驾驶", "L4自动驾驶", "无人驾驶", "智能汽车", "汽车智能化", "高级辅助驾驶"]
+    policy_keywords = ["政策", "条例", "办法", "要求", "细则", "实施", "法规", "通知", "意见", "规划", "标准", "规范"]
     
     print("🔍 搜索中国官方政策...")
     for kw in china_keywords:
         for pk in policy_keywords[:5]:  # 限制组合数量
             query = f"site:gov.cn {kw} {pk} 2025 OR 2026"
-            results = search_tavily(query, 12)
+            results = search_tavily(query, 15)
             for r in results:
                 url = r.get("url", "")
                 title = r.get("title", "")
@@ -93,7 +93,7 @@ def fetch_official_policy():
                         })
     
     # 美国政策搜索
-    us_keywords = ["autonomous vehicle", "self-driving", "automated driving", "robotaxi"]
+    us_keywords = ["autonomous vehicle", "self-driving", "automated driving", "robotaxi", "AV regulation"]
     us_policy = ["policy", "regulation", "guidelines", "rules", "act", "bill"]
     
     print("🔍 搜索美国官方政策...")
@@ -117,17 +117,48 @@ def fetch_official_policy():
                             "date": date,
                         })
     
-    # 去重 + 过滤航空器
+    # 欧洲政策搜索 (新增)
+    eu_keywords = ["autonomous vehicle", "self-driving car", "automated driving"]
+    eu_policy = ["regulation", "policy", "guidelines", "directive"]
+    
+    print("🔍 搜索欧洲官方政策...")
+    for kw in eu_keywords:
+        for pk in eu_policy[:3]:
+            query = f"site:.eu {kw} {pk} 2025 OR 2026"
+            results = search_tavily(query, 8)
+            for r in results:
+                url = r.get("url", "")
+                title = r.get("title", "")
+                content = r.get("content", "")
+                
+                if ".eu" in url or "europa.eu" in url:
+                    date = extract_date_from_text(content[:3000])
+                    if date and is_recent_3_months(date):
+                        updates.append({
+                            "country": "欧洲",
+                            "source": extract_domain(url),
+                            "url": url,
+                            "title": title,
+                            "date": date,
+                        })
+    
+    # 去重 + 过滤航空器/无人机
     seen = set()
     unique_updates = []
     for u in updates:
-        key = u["url"]
-        # 过滤掉航空器相关
-        if "航空器" in u["title"]:
+        url = u.get("url", "")
+        title = u.get("title", "")
+        # 过滤掉航空器/无人机相关
+        if "航空器" in title or "无人机" in title:
             continue
-        if key not in seen:
-            seen.add(key)
-            unique_updates.append(u)
+        # 去重：按URL和标题双重去重
+        url_key = url
+        title_key = title[:30]  # 标题前30字符
+        dedup_key = (url_key, title_key)
+        if dedup_key in seen:
+            continue
+        seen.add(dedup_key)
+        unique_updates.append(u)
     
     # 按日期排序
     unique_updates.sort(key=lambda x: x["date"], reverse=True)
@@ -203,6 +234,8 @@ def generate_html(updates):
                 <div class="stat">
                     <div class="stat-number">{sum(1 for u in updates if u['country'] == '美国')}</div>
                     <div class="stat-label">美国</div>
+                    <div class="stat-number">{sum(1 for u in updates if u['country'] == '欧洲')}</div>
+                    <div class="stat-label">欧洲</div>
                 </div>
             </div>
         </header>
@@ -220,6 +253,7 @@ def generate_html(updates):
             <button class="filter-btn active" data-filter="all">全部</button>
             <button class="filter-btn" data-filter="中国">中国</button>
             <button class="filter-btn" data-filter="美国">美国</button>
+                    <button class="filter-btn" data-filter="欧洲">欧洲</button>
         </div>
         
         <div class="update-list">
