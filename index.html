@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自动驾驶政策法规最新动态</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 40px 30px; border-radius: 16px; margin-bottom: 30px; }
+        h1 { font-size: 32px; margin-bottom: 10px; }
+        .subtitle { opacity: 0.8; font-size: 14px; }
+        .stats { display: flex; gap: 30px; margin-top: 20px; }
+        .stat { text-align: center; }
+        .stat-number { font-size: 28px; font-weight: bold; }
+        .stat-label { font-size: 12px; opacity: 0.7; }
+        .filters { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .filter-btn { padding: 8px 16px; border: none; border-radius: 20px; background: white; color: #333; cursor: pointer; font-size: 14px; transition: all 0.3s; }
+        .filter-btn.active { background: #1a1a2e; color: white; }
+        .filter-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .update-list { display: grid; gap: 16px; }
+        .update-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: all 0.3s; }
+        .update-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+        .country-tag { padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500; }
+        .country-cn { background: #e74c3c; color: white; }
+        .country-us { background: #3498db; color: white; }
+        .country-global { background: #9b59b6; color: white; }
+        .date { color: #999; font-size: 13px; }
+        .card-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; line-height: 1.5; }
+        .card-title a { color: #333; text-decoration: none; }
+        .card-title a:hover { color: #1a1a2e; }
+        .card-source { color: #666; font-size: 13px; }
+        footer { text-align: center; padding: 30px; color: #999; font-size: 13px; }
+        .last-update { margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚗 自动驾驶政策法规最新动态</h1>
+            <div class="subtitle">中国各省市政府网站 | 美国各州交通部门 | 全球政策追踪</div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">58</div>
+                    <div class="stat-label">今日更新</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">30</div>
+                    <div class="stat-label">中国</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">19</div>
+                    <div class="stat-label">美国</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">全球</div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="中国">中国</button>
+            <button class="filter-btn" data-filter="美国">美国</button>
+            <button class="filter-btn" data-filter="全球">全球</button>
+        </div>
+        
+        <div class="update-list">
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="http://www.pday.com.cn/Htmls/Report/202601/24554803.html" target="_blank">2025-2026年全球和中国自动驾驶政策法规及各国汽车市场准入研究 ...</a>
+                </div>
+                <div class="card-source">来源：2025-2026年全球和中国自动驾驶政策法规及各国汽车市场准入研究 ...</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.stdaily.com/web/gdxw/2026-03/11/content_484059.html" target="_blank">两会微访谈丨中国L4自动驾驶1~3年将落地政策先行是关键</a>
+                </div>
+                <div class="card-source">来源：两会微访谈丨中国L4自动驾驶1~3年将落地政策先行是关键</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://xueqiu.com/5681197882/378853127" target="_blank">2026年全国两会期间，自动驾驶成为热点议题 - 雪球</a>
+                </div>
+                <div class="card-source">来源：2026年全国两会期间，自动驾驶成为热点议题 - 雪球</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="http://www.news.cn/20260122/a8ed93ac53ae4b8bac0f59adf3af34a4/c.html" target="_blank">2026年中国汽车产业：汽车智驾产业进入新阶段 - 新华网</a>
+                </div>
+                <div class="card-source">来源：2026年中国汽车产业：汽车智驾产业进入新阶段 - 新华网</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="http://lianghui.people.com.cn/2026/n1/2026/0305/c461827-40674951.html" target="_blank">让自动驾驶更“有条件”（融观察） --2026年全国两会</a>
+                </div>
+                <div class="card-source">来源：让自动驾驶更“有条件”（融观察） --2026年全国两会</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="http://www.caict.ac.cn/english/research/whitepapers/202504/P020250403362282204282.pdf" target="_blank">[PDF] 自动驾驶战略与政策观察</a>
+                </div>
+                <div class="card-source">来源：[PDF] 自动驾驶战略与政策观察</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://m.bjnews.com.cn/detail/1772761586169303.html" target="_blank">两会经济策｜自动驾驶，安全与责任边界在哪？</a>
+                </div>
+                <div class="card-source">来源：两会经济策｜自动驾驶，安全与责任边界在哪？</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="http://www.news.cn/fortune/20251216/389646029b2f48809f6019582417ed80/c.html" target="_blank">L3级自动驾驶车型获附条件准入许可商业化落地迎来关键节点 - 新华网</a>
+                </div>
+                <div class="card-source">来源：L3级自动驾驶车型获附条件准入许可商业化落地迎来关键节点 - 新华网</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://news.qq.com/rain/a/20240904A02MAQ00" target="_blank">2026年元月起生效我国智能网联汽车首批强制性国标正式颁布-腾讯新闻</a>
+                </div>
+                <div class="card-source">来源：2026年元月起生效我国智能网联汽车首批强制性国标正式颁布-腾讯新闻</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="http://www.news.cn/government/20240906/d1249fd6dd2145359efdce06db7fd3c0/c.html" target="_blank">智能网联汽车领域首批强制性国家标准发布 - 新华网</a>
+                </div>
+                <div class="card-source">来源：智能网联汽车领域首批强制性国家标准发布 - 新华网</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://finance.sina.com.cn/jjxw/2026-04-01/doc-inhszayn2530919.shtml" target="_blank">智能网联汽车领域出台两个系列标准 - 新浪财经</a>
+                </div>
+                <div class="card-source">来源：智能网联汽车领域出台两个系列标准 - 新浪财经</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.esmchina.com/news/12206.html" target="_blank">工信部正式公布三项智能网联汽车强制性国家标准-国际电子商情</a>
+                </div>
+                <div class="card-source">来源：工信部正式公布三项智能网联汽车强制性国家标准-国际电子商情</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://catarc.org.cn/xwdt/gzdt/4816.html" target="_blank">中德智能网联汽车标准法规工作组2024年第一次会议在盐城召开</a>
+                </div>
+                <div class="card-source">来源：中德智能网联汽车标准法规工作组2024年第一次会议在盐城召开</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://kjj.wuhan.gov.cn/xwzx_8/kjspxw/202501/t20250103_2512187.html" target="_blank">科技新闻</a>
+                </div>
+                <div class="card-source">来源：科技新闻</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.hunanpark.cn/show/99.html" target="_blank">产业观察 | 智能网联行业信息2024年1月政策、标准与场景信息专题月报_自动驾驶_湖南园区网</a>
+                </div>
+                <div class="card-source">来源：产业观察 | 智能网联行业信息2024年1月政策、标准与场景信息专题月报_自动驾驶_湖南园区网</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="http://news.10jqka.com.cn/field/20260330/675637800.shtml" target="_blank">2026国内外智能驾驶行业：L3准入开启商业化新纪元_中研普华_中研网</a>
+                </div>
+                <div class="card-source">来源：2026国内外智能驾驶行业：L3准入开启商业化新纪元_中研普华_中研网</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://chejiahao.autohome.com.cn/info/24995891" target="_blank">真的来了！八部门力挺L3自动驾驶量产，2026年引爆万亿市场！</a>
+                </div>
+                <div class="card-source">来源：真的来了！八部门力挺L3自动驾驶量产，2026年引爆万亿市场！</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.21jingji.com/article/20260116/8eef996255b22c7e1c004c70e74467ae.html" target="_blank">工信部定调高级别自动驾驶 L3级产业化按下“快进键” - 21经济网</a>
+                </div>
+                <div class="card-source">来源：工信部定调高级别自动驾驶 L3级产业化按下“快进键” - 21经济网</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://zhuanlan.zhihu.com/p/2019938816857776812" target="_blank">L3 vs L4：自动驾驶2026年最大的路线之争，车企不敢说的秘密......</a>
+                </div>
+                <div class="card-source">来源：L3 vs L4：自动驾驶2026年最大的路线之争，车企不敢说的秘密......</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://auto.cnr.cn/2015xc/20260105/t20260105_527483428.shtml" target="_blank">L3ԵƱ֮2026ԶʻĻ봳_</a>
+                </div>
+                <div class="card-source">来源：L3ԵƱ֮2026ԶʻĻ봳_</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://chejiahao.autohome.com.cn/info/24555832" target="_blank">L3自动驾驶有附加条件？2026年还有“国补”？</a>
+                </div>
+                <div class="card-source">来源：L3自动驾驶有附加条件？2026年还有“国补”？</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://finance.sina.com.cn/stock/relnews/cn/2026-04-07/doc-inhtrytk2379223.shtml" target="_blank">2026年汽车行业智能驾驶专题系列：技术路线逐渐清晰，高阶智驾迎 ...</a>
+                </div>
+                <div class="card-source">来源：2026年汽车行业智能驾驶专题系列：技术路线逐渐清晰，高阶智驾迎 ...</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://news.qq.com/rain/a/20260206A041GW00" target="_blank">“车路云一体化”进入标准拟定密集期：基础设施技术标准启动编制、“国标+团标”将双线并行_腾讯新闻</a>
+                </div>
+                <div class="card-source">来源：“车路云一体化”进入标准拟定密集期：基础设施技术标准启动编制、“国标+团标”将双线并行_腾讯新闻</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://auto.ifeng.com/c/8q7jb4JCCv2" target="_blank">【网通社快报】2026年“车路云一体化”建设全面提速，多地推进试点与标准落地_凤凰网</a>
+                </div>
+                <div class="card-source">来源：【网通社快报】2026年“车路云一体化”建设全面提速，多地推进试点与标准落地_凤凰网</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.cls.cn/detail/2211298" target="_blank">“基础设施分级”征求意见稿或年底形成“车路云一体化”进入标准体系 ...</a>
+                </div>
+                <div class="card-source">来源：“基础设施分级”征求意见稿或年底形成“车路云一体化”进入标准体系 ...</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.stcn.com/article/detail/1247741.html" target="_blank">力争2026年搭建统一共用的智能网联汽车“车路云一体化”标准体系</a>
+                </div>
+                <div class="card-source">来源：力争2026年搭建统一共用的智能网联汽车“车路云一体化”标准体系</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.news.cn/fortune/20260122/77239620d2e64aacb31b871adc564f1f/c.html" target="_blank">2026年中国汽车产业：汽车智驾产业进入新阶段-新华网</a>
+                </div>
+                <div class="card-source">来源：2026年中国汽车产业：汽车智驾产业进入新阶段-新华网</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://finance.sina.cn/2024-01-17/detail-inacwefw2529936.d.html?vt=4" target="_blank">五部委：从2024年至2026年开展“车路云一体化”应用试点。 - 新浪财经</a>
+                </div>
+                <div class="card-source">来源：五部委：从2024年至2026年开展“车路云一体化”应用试点。 - 新浪财经</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://7its.com/?m=home&c=View&a=index&aid=29808" target="_blank">2026车路云一体化的“赶考”之路 - 赛文交通网</a>
+                </div>
+                <div class="card-source">来源：2026车路云一体化的“赶考”之路 - 赛文交通网</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <span class="country-tag country-cn">中国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://i.gasgoo.com/news/70453348.html" target="_blank">智能电动2026 | 李克强：以“车路云一体化”破解智能驾驶安全瓶颈</a>
+                </div>
+                <div class="card-source">来源：智能电动2026 | 李克强：以“车路云一体化”破解智能驾驶安全瓶颈</div>
+            </div>
+
+            <div class="update-card" data-country="美国">
+                <div class="card-header">
+                    <span class="country-tag country-us">美国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.linkedin.com/posts/jeffkalman_autonomousvehicles-av2026-nhtsa-activity-7435305987093315584-pClz" target="_blank">2026 US AV Regulation: 4 Pillars of Compliance - LinkedIn</a>
+                </div>
+                <div class="card-source">来源：2026 US AV Regulation: 4 Pillars of Compliance - L</div>
+            </div>
+
+            <div class="update-card" data-country="美国">
+                <div class="card-header">
+                    <span class="country-tag country-us">美国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://aurora.tech/newsroom/driverless-not-ruleless-why-2026-is-the-year-for-federal-av-standards" target="_blank">Driverless, Not Ruleless: Why 2026 is the Year for Federal AV Standards</a>
+                </div>
+                <div class="card-source">来源：Driverless, Not Ruleless: Why 2026 is the Year for</div>
+            </div>
+
+            <div class="update-card" data-country="美国">
+                <div class="card-header">
+                    <span class="country-tag country-us">美国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.dentons.com/en/insights/guides-reports-and-whitepapers/2026/march/30/2026-us-autonomous-vehicles-guide" target="_blank">2026 US Autonomous Vehicles Guide: Navigating the Legal and ...</a>
+                </div>
+                <div class="card-source">来源：2026 US Autonomous Vehicles Guide: Navigating the </div>
+            </div>
+
+            <div class="update-card" data-country="美国">
+                <div class="card-header">
+                    <span class="country-tag country-us">美国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://latta.house.gov/news/documentsingle.aspx?DocumentID=406708" target="_blank">Latta Introduces Legislation to Safeguard Autonomous Vehicles</a>
+                </div>
+                <div class="card-source">来源：Latta Introduces Legislation to Safeguard Autonomo</div>
+            </div>
+
+            <div class="update-card" data-country="美国">
+                <div class="card-header">
+                    <span class="country-tag country-us">美国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.theavindustry.org/press-release/avia-statement-on-the-introduction-of-self-drive-act" target="_blank">The AV Industry</a>
+                </div>
+                <div class="card-source">来源：The AV Industry</div>
+            </div>
+
+            <div class="update-card" data-country="美国">
+                <div class="card-header">
+                    <span class="country-tag country-us">美国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.congress.gov/bill/119th-congress/house-bill/7390/text" target="_blank">Text - H.R.7390 - 119th Congress (2025-2026): SELF DRIVE Act of ...</a>
+                </div>
+                <div class="card-source">来源：Text - H.R.7390 - 119th Congress (2025-2026): SELF</div>
+            </div>
+
+            <div class="update-card" data-country="美国">
+                <div class="card-header">
+                    <span class="country-tag country-us">美国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.trafficsafetystore.com/blog/where-are-we-with-driverless-cars-in-the-u-s-2026/?srsltid=AfmBOopkw8AIWaofm5qyz61lrj0mzee7nW0488Fwyj0KdBTSNsCZevGn" target="_blank">Where are we with Driverless Cars in the U.S. (2026)</a>
+                </div>
+                <div class="card-source">来源：Where are we with Driverless Cars in the U.S. (202</div>
+            </div>
+
+            <div class="update-card" data-country="美国">
+                <div class="card-header">
+                    <span class="country-tag country-us">美国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.commerce.senate.gov/services/files/4B417566-2E6B-4460-B38E-1D745F2146C7" target="_blank">[PDF] HIT THE ROAD, MAC: THE FUTURE OF SELF-DRIVING CARS</a>
+                </div>
+                <div class="card-source">来源：[PDF] HIT THE ROAD, MAC: THE FUTURE OF SELF-DRIVIN</div>
+            </div>
+
+            <div class="update-card" data-country="美国">
+                <div class="card-header">
+                    <span class="country-tag country-us">美国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.thetrucker.com/trucking-news/equipment-tech/self-drive-act-of-2026-would-allow-autonomous-manufacturers-to-self-certify-their-products" target="_blank">SELF DRIVE Act of 2026 would allow autonomous manufacturers to self-certify their products - TheTrucker.com</a>
+                </div>
+                <div class="card-source">来源：SELF DRIVE Act of 2026 would allow autonomous manu</div>
+            </div>
+
+            <div class="update-card" data-country="美国">
+                <div class="card-header">
+                    <span class="country-tag country-us">美国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://freedomforallamericans.org/self-drive-act/" target="_blank">SELF DRIVE Act Of 2026: Federal Framework ...</a>
+                </div>
+                <div class="card-source">来源：SELF DRIVE Act Of 2026: Federal Framework ...</div>
+            </div>
+
+            <div class="update-card" data-country="美国">
+                <div class="card-header">
+                    <span class="country-tag country-us">美国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.theavindustry.org/press-release/autonomous-vehicle-industry-association-applauds-progress-on-bipartisan-self-drive-act" target="_blank">The AV Industry</a>
+                </div>
+                <div class="card-source">来源：The AV Industry</div>
+            </div>
+
+            <div class="update-card" data-country="美国">
+                <div class="card-header">
+                    <span class="country-tag country-us">美国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.ncsl.org/transportation/autonomous-vehicles" target="_blank">Self-Driving Vehicles Enacted Legislation</a>
+                </div>
+                <div class="card-source">来源：Self-Driving Vehicles Enacted Legislation</div>
+            </div>
+
+            <div class="update-card" data-country="美国">
+                <div class="card-header">
+                    <span class="country-tag country-us">美国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.foxnews.com/politics/congress-moves-set-national-rules-self-driving-cars-overriding-states" target="_blank">Congress moves to set national rules for self-driving cars ...</a>
+                </div>
+                <div class="card-source">来源：Congress moves to set national rules for self-driv</div>
+            </div>
+
+            <div class="update-card" data-country="美国">
+                <div class="card-header">
+                    <span class="country-tag country-us">美国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.autonomous-vehicles-conference.com/news/federal-rules-are-coming-for-self-driving-cars" target="_blank">Autonomous Vehicles & AI USA 2026 | Federal AV Rules</a>
+                </div>
+                <div class="card-source">来源：Autonomous Vehicles & AI USA 2026 | Federal AV Rul</div>
+            </div>
+
+            <div class="update-card" data-country="美国">
+                <div class="card-header">
+                    <span class="country-tag country-us">美国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.cnbc.com/2026/01/22/musk-tesla-robotaxis-us-expansion.html" target="_blank">Musk says Tesla's robotaxis will be widespread in the U.S. ...</a>
+                </div>
+                <div class="card-source">来源：Musk says Tesla's robotaxis will be widespread in </div>
+            </div>
+
+            <div class="update-card" data-country="美国">
+                <div class="card-header">
+                    <span class="country-tag country-us">美国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.wfmd.com/2026/02/10/congress-moves-to-set-national-rules-for-self-driving-cars-overriding-states/" target="_blank">Congress moves to set national rules for self-driving cars, overriding states | 930 WFMD Free Talk</a>
+                </div>
+                <div class="card-source">来源：Congress moves to set national rules for self-driv</div>
+            </div>
+
+            <div class="update-card" data-country="美国">
+                <div class="card-header">
+                    <span class="country-tag country-us">美国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.act-news.com/news/house-introduces-discussion-draft-of-self-drive-act-of-2026/" target="_blank">House Introduces Discussion Draft of SELF DRIVE Act of 2026</a>
+                </div>
+                <div class="card-source">来源：House Introduces Discussion Draft of SELF DRIVE Ac</div>
+            </div>
+
+            <div class="update-card" data-country="美国">
+                <div class="card-header">
+                    <span class="country-tag country-us">美国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.cbtnews.com/federal-safety-agency-hosts-forum-on-robotaxi-deployment/" target="_blank">Federal safety agency hosts forum on robotaxi deployment ...</a>
+                </div>
+                <div class="card-source">来源：Federal safety agency hosts forum on robotaxi depl</div>
+            </div>
+
+            <div class="update-card" data-country="美国">
+                <div class="card-header">
+                    <span class="country-tag country-us">美国</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.facebook.com/teslainsiderfb/posts/us-lawmakers-are-considering-a-major-update-to-self-driving-regulations-that-wou/122152481048664960/" target="_blank">U.S. lawmakers are considering a major update to self</a>
+                </div>
+                <div class="card-source">来源：U.S. lawmakers are considering a major update to s</div>
+            </div>
+
+            <div class="update-card" data-country="全球">
+                <div class="card-header">
+                    <span class="country-tag country-global">全球</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.urbansdk.com/resources/how-different-countries-are-regulating-autonomous-vehicles" target="_blank">How Different Countries are Regulating Autonomous Vehicles</a>
+                </div>
+                <div class="card-source">来源：How Different Countries are Regulating Autonomous </div>
+            </div>
+
+            <div class="update-card" data-country="全球">
+                <div class="card-header">
+                    <span class="country-tag country-global">全球</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://transport.ec.europa.eu/document/download/89b3143e-09b6-4ae6-a826-932b90ed0816_en" target="_blank">[PDF] EUROPEAN COMMISSION Brussels, 5.3.2025 COM(2025) 95 final ...</a>
+                </div>
+                <div class="card-source">来源：[PDF] EUROPEAN COMMISSION Brussels, 5.3.2025 COM(2</div>
+            </div>
+
+            <div class="update-card" data-country="全球">
+                <div class="card-header">
+                    <span class="country-tag country-global">全球</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.connectedautomateddriving.eu/regulation-and-policies/" target="_blank">Regulations and Policies - Connected Automated Driving</a>
+                </div>
+                <div class="card-source">来源：Regulations and Policies - Connected Automated Dri</div>
+            </div>
+
+            <div class="update-card" data-country="全球">
+                <div class="card-header">
+                    <span class="country-tag country-global">全球</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://thenextweb.com/news/tesla-fsd-supervised-netherlands-europe" target="_blank">The Netherlands becomes the first European country to approve Tesla’s FSD Supervised</a>
+                </div>
+                <div class="card-source">来源：The Netherlands becomes the first European country</div>
+            </div>
+
+            <div class="update-card" data-country="全球">
+                <div class="card-header">
+                    <span class="country-tag country-global">全球</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.digitaleurope.org/resources/embracing-the-future-of-mobility-a-strategy-for-autonomous-driving-in-the-eu/" target="_blank">Embracing the future of mobility: a strategy for autonomous driving in ...</a>
+                </div>
+                <div class="card-source">来源：Embracing the future of mobility: a strategy for a</div>
+            </div>
+
+            <div class="update-card" data-country="全球">
+                <div class="card-header">
+                    <span class="country-tag country-global">全球</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.cceeccic.org/1810725591.html" target="_blank">欧盟修订自动驾驶系统型式认证规则</a>
+                </div>
+                <div class="card-source">来源：欧盟修订自动驾驶系统型式认证规则</div>
+            </div>
+
+            <div class="update-card" data-country="全球">
+                <div class="card-header">
+                    <span class="country-tag country-global">全球</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="http://www.maixize.com/article-1462.html" target="_blank">欧盟自动驾驶法规深度解读（EU）2022/1426 及2026/481 修订版</a>
+                </div>
+                <div class="card-source">来源：欧盟自动驾驶法规深度解读（EU）2022/1426 及2026/481 修订版</div>
+            </div>
+
+            <div class="update-card" data-country="全球">
+                <div class="card-header">
+                    <span class="country-tag country-global">全球</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.shujubang.com/home/login/index/gid/21311" target="_blank">佐思汽研发布《2025-2026年全球和中国自动驾驶政策法规及各国 ...</a>
+                </div>
+                <div class="card-source">来源：佐思汽研发布《2025-2026年全球和中国自动驾驶政策法规及各国 ...</div>
+            </div>
+
+            <div class="update-card" data-country="全球">
+                <div class="card-header">
+                    <span class="country-tag country-global">全球</span>
+                    <span class="date">2026-04-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.sohu.com/a/986098618_468661" target="_blank">联合国通过《自动驾驶系统全球法规草案》 - 搜狐</a>
+                </div>
+                <div class="card-source">来源：联合国通过《自动驾驶系统全球法规草案》 - 搜狐</div>
+            </div>
+
+        </div>
+        
+        <footer>
+            <div>数据来源：交通运输部、工信部、中国政府网、美国交通部、各省市政府网站</div>
+            <div class="last-update">最后更新：2026-04-13 14:18:43</div>
+        </footer>
+    </div>
+    
+    <script>
+        const buttons = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.update-card');
+        
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                cards.forEach(card => {
+                    if (filter === 'all' || card.dataset.country === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

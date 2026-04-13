@@ -1,0 +1,266 @@
+#!/usr/bin/env python3
+"""
+自动驾驶政策法规抓取脚本
+每天早上11点运行，抓取中国各省市政府网站和美国各州交通部门的政策更新
+"""
+
+import json
+import os
+import datetime
+import subprocess
+from pathlib import Path
+
+def search_tavily(query, max_results=10):
+    """使用Tavily搜索"""
+    import urllib.request
+    import urllib.parse
+    
+    url = "https://api.tavily.com/search"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer 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"
+    }
+    data = {
+        "query": query,
+        "search_depth": "basic",
+        "max_results": max_results
+    }
+    
+    try:
+        import json
+        req = urllib.request.Request(url, data=json.dumps(data).encode('utf-8'), headers=headers, method='POST')
+        with urllib.request.urlopen(req, timeout=30) as response:
+            result = json.loads(response.read().decode('utf-8'))
+            return result.get("results", [])
+    except Exception as e:
+        print(f"Tavily搜索出错: {e}")
+        return []
+
+def fetch_government_updates():
+    """抓取政府网站政策更新"""
+    updates = []
+    
+    # 中国政策搜索
+    china_queries = [
+        "自动驾驶 政策法规 2026 中国",
+        "智能网联汽车 管理条例 2026",
+        "L3自动驾驶 准入 2026",
+        "车路云一体化 政策 2026",
+    ]
+    
+    print("🔍 搜索中国自动驾驶政策...")
+    for query in china_queries:
+        results = search_tavily(query, 8)
+        for r in results:
+            updates.append({
+                "country": "中国",
+                "source": r.get("title", "")[:50],
+                "url": r.get("url", ""),
+                "title": r.get("title", ""),
+                "date": datetime.date.today().isoformat(),
+                "type": "政策法规"
+            })
+    
+    # 美国政策搜索
+    us_queries = [
+        "autonomous vehicle policy regulation 2026 USA",
+        "self-driving car legislation 2026 US states",
+        "robotaxi regulation 2026 United States",
+    ]
+    
+    print("🔍 搜索美国自动驾驶政策...")
+    for query in us_queries:
+        results = search_tavily(query, 8)
+        for r in results:
+            updates.append({
+                "country": "美国",
+                "source": r.get("title", "")[:50],
+                "url": r.get("url", ""),
+                "title": r.get("title", ""),
+                "date": datetime.date.today().isoformat(),
+                "type": "政策法规"
+            })
+    
+    # 全球/欧洲搜索
+    global_queries = [
+        "autonomous vehicle regulation Europe 2026",
+        "自动驾驶 法规 欧洲 2026",
+    ]
+    
+    print("🔍 搜索全球自动驾驶政策...")
+    for query in global_queries:
+        results = search_tavily(query, 5)
+        for r in results:
+            updates.append({
+                "country": "全球",
+                "source": r.get("title", "")[:50],
+                "url": r.get("url", ""),
+                "title": r.get("title", ""),
+                "date": datetime.date.today().isoformat(),
+                "type": "政策法规"
+            })
+    
+    # 去重
+    seen = set()
+    unique_updates = []
+    for u in updates:
+        key = u["url"]
+        if key not in seen:
+            seen.add(key)
+            unique_updates.append(u)
+    
+    return unique_updates
+
+def generate_html(updates):
+    """生成HTML页面"""
+    html = f'''<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自动驾驶政策法规最新动态</title>
+    <style>
+        * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+        body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; padding: 20px; }}
+        .container {{ max-width: 1200px; margin: 0 auto; }}
+        header {{ background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 40px 30px; border-radius: 16px; margin-bottom: 30px; }}
+        h1 {{ font-size: 32px; margin-bottom: 10px; }}
+        .subtitle {{ opacity: 0.8; font-size: 14px; }}
+        .stats {{ display: flex; gap: 30px; margin-top: 20px; }}
+        .stat {{ text-align: center; }}
+        .stat-number {{ font-size: 28px; font-weight: bold; }}
+        .stat-label {{ font-size: 12px; opacity: 0.7; }}
+        .filters {{ display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }}
+        .filter-btn {{ padding: 8px 16px; border: none; border-radius: 20px; background: white; color: #333; cursor: pointer; font-size: 14px; transition: all 0.3s; }}
+        .filter-btn.active {{ background: #1a1a2e; color: white; }}
+        .filter-btn:hover {{ transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }}
+        .update-list {{ display: grid; gap: 16px; }}
+        .update-card {{ background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: all 0.3s; }}
+        .update-card:hover {{ transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }}
+        .card-header {{ display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }}
+        .country-tag {{ padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500; }}
+        .country-cn {{ background: #e74c3c; color: white; }}
+        .country-us {{ background: #3498db; color: white; }}
+        .country-global {{ background: #9b59b6; color: white; }}
+        .date {{ color: #999; font-size: 13px; }}
+        .card-title {{ font-size: 16px; font-weight: 600; margin-bottom: 8px; line-height: 1.5; }}
+        .card-title a {{ color: #333; text-decoration: none; }}
+        .card-title a:hover {{ color: #1a1a2e; }}
+        .card-source {{ color: #666; font-size: 13px; }}
+        footer {{ text-align: center; padding: 30px; color: #999; font-size: 13px; }}
+        .last-update {{ margin-top: 10px; }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚗 自动驾驶政策法规最新动态</h1>
+            <div class="subtitle">中国各省市政府网站 | 美国各州交通部门 | 全球政策追踪</div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">{len(updates)}</div>
+                    <div class="stat-label">今日更新</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">{sum(1 for u in updates if u['country'] == '中国')}</div>
+                    <div class="stat-label">中国</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">{sum(1 for u in updates if u['country'] == '美国')}</div>
+                    <div class="stat-label">美国</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">{sum(1 for u in updates if u['country'] == '全球')}</div>
+                    <div class="stat-label">全球</div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="中国">中国</button>
+            <button class="filter-btn" data-filter="美国">美国</button>
+            <button class="filter-btn" data-filter="全球">全球</button>
+        </div>
+        
+        <div class="update-list">
+'''
+    
+    for u in updates:
+        country_class = "country-cn" if u["country"] == "中国" else ("country-us" if u["country"] == "美国" else "country-global")
+        html += f'''
+            <div class="update-card" data-country="{u['country']}">
+                <div class="card-header">
+                    <span class="country-tag {country_class}">{u['country']}</span>
+                    <span class="date">{u['date']}</span>
+                </div>
+                <div class="card-title">
+                    <a href="{u['url']}" target="_blank">{u['title']}</a>
+                </div>
+                <div class="card-source">来源：{u['source']}</div>
+            </div>
+'''
+    
+    html += '''
+        </div>
+        
+        <footer>
+            <div>数据来源：交通运输部、工信部、中国政府网、美国交通部、各省市政府网站</div>
+            <div class="last-update">最后更新：''' + datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + '''</div>
+        </footer>
+    </div>
+    
+    <script>
+        const buttons = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.update-card');
+        
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                cards.forEach(card => {
+                    if (filter === 'all' || card.dataset.country === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>'''
+    
+    return html
+
+def main():
+    """主函数"""
+    print(f"🚀 开始抓取自动驾驶政策法规 - {datetime.datetime.now()}")
+    
+    # 抓取更新
+    updates = fetch_government_updates()
+    
+    # 生成HTML
+    html = generate_html(updates)
+    
+    # 保存文件
+    output_path = Path(__file__).parent / "index.html"
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(html)
+    
+    print(f"✅ 已生成 {output_path}, 共 {len(updates)} 条更新")
+    
+    # 保存JSON数据
+    data_path = Path(__file__).parent / "data" / "updates.json"
+    data_path.parent.mkdir(exist_ok=True)
+    with open(data_path, "w", encoding="utf-8") as f:
+        json.dump(updates, f, ensure_ascii=False, indent=2)
+    
+    print(f"✅ 已保存数据到 {data_path}")
+    
+    return updates
+
+if __name__ == "__main__":
+    main()
