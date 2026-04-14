@@ -4,364 +4,363 @@
     <meta charset="UTF-8">
     <title>自动驾驶政策法规最新动态</title>
     <style>
-        body { font-family: -apple-system, sans-serif; background: #f5f7fa; padding: 20px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0f2f5; padding: 20px; }
         .container { max-width: 1200px; margin: 0 auto; }
-        header { background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; padding: 30px; border-radius: 16px; margin-bottom: 20px; }
-        h1 { margin: 0 0 10px 0; }
-        .stats { display: flex; gap: 30px; margin-top: 15px; }
-        .stat { text-align: center; }
-        .stat-number { font-size: 24px; font-weight: bold; }
+        
+        /* Header */
+        header { background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; padding: 30px; border-radius: 16px; margin-bottom: 24px; }
+        header h1 { margin: 0 0 8px 0; font-size: 28px; }
+        header .subtitle { opacity: 0.8; font-size: 14px; margin-bottom: 20px; }
+        .stats { display: flex; gap: 24px; flex-wrap: wrap; }
+        .stat { text-align: center; min-width: 80px; }
+        .stat-number { font-size: 28px; font-weight: bold; }
         .stat-label { font-size: 12px; opacity: 0.8; }
-        .filters { display: flex; gap: 10px; margin-bottom: 20px; }
-        .filter-btn { padding: 8px 16px; border: none; border-radius: 20px; background: white; cursor: pointer; }
+        
+        /* Search & Filter */
+        .controls { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+        .search-box { flex: 1; min-width: 200px; position: relative; }
+        .search-box input { width: 100%; padding: 12px 16px 12px 44px; border: none; border-radius: 12px; font-size: 15px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+        .search-box::before { content: '🔍'; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 16px; }
+        
+        .filter-group { display: flex; gap: 8px; flex-wrap: wrap; }
+        .filter-btn { padding: 10px 18px; border: none; border-radius: 20px; background: white; cursor: pointer; font-size: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: all 0.2s; }
+        .filter-btn:hover { transform: translateY(-1px); }
         .filter-btn.active { background: #1a1a2e; color: white; }
-        .update-card { background: white; border-radius: 12px; padding: 16px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-        .country-tag { padding: 3px 10px; border-radius: 10px; font-size: 12px; color: white; }
-        .country-cn { background: #e74c3c; }
-        .country-us { background: #3498db; }
-        .country-eu { background: #9b59b6; }
-        .card-title { font-size: 15px; margin: 10px 0 5px; }
-        .card-title a { color: #333; text-decoration: none; }
-        .card-source { color: #999; font-size: 12px; }
+        
+        .tag-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+        .tag { padding: 4px 12px; border-radius: 12px; font-size: 12px; cursor: pointer; transition: all 0.2s; }
+        .tag:hover { transform: scale(1.05); }
+        .tag.active { font-weight: bold; }
+        .tag-l3 { background: #e8f5e9; color: #2e7d32; }
+        .tag-l3.active { background: #2e7d32; color: white; }
+        .tag-l4 { background: #e3f2fd; color: #1565c0; }
+        .tag-l4.active { background: #1565c0; color: white; }
+        .tag-liability { background: #fff3e0; color: #e65100; }
+        .tag-liability.active { background: #e65100; color: white; }
+        .tag-data { background: #f3e5f5; color: #7b1fa2; }
+        .tag-data.active { background: #7b1fa2; color: white; }
+        .tag-standard { background: #e0f2f1; color: #00695c; }
+        .tag-standard.active { background: #00695c; color: white; }
+        .tag-pilot { background: #fce4ec; color: #c2185b; }
+        .tag-pilot.active { background: #c2185b; color: white; }
+        
+        /* Policy Cards */
+        .update-list { display: flex; flex-direction: column; gap: 12px; }
+        .update-card { background: white; border-radius: 12px; padding: 18px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: all 0.2s; }
+        .update-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        
+        .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+        .country-tag { padding: 4px 12px; border-radius: 12px; font-size: 12px; color: white; font-weight: 500; }
+        .country-cn { background: #e53935; }
+        .country-us { background: #1976d2; }
+        .country-eu { background: #7b1fa2; }
+        
+        .card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+        .card-tag { padding: 2px 8px; border-radius: 8px; font-size: 11px; }
+        
+        .card-title { font-size: 16px; margin: 8px 0; line-height: 1.5; }
+        .card-title a { color: #1a1a2e; text-decoration: none; }
+        .card-title a:hover { color: #1976d2; }
+        
+        .card-summary { color: #666; font-size: 14px; margin: 8px 0; line-height: 1.6; }
+        
+        .card-meta { display: flex; gap: 16px; color: #999; font-size: 12px; margin-top: 10px; flex-wrap: wrap; }
+        .card-meta span { display: flex; align-items: center; gap: 4px; }
+        
+        .empty-state { text-align: center; padding: 60px 20px; color: #999; }
+        .empty-state-icon { font-size: 48px; margin-bottom: 16px; }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>🚗 自动驾驶政策法规最新动态</h1>
-            <div>最近12个月 | 中国·美国·欧洲</div>
+            <div class="subtitle">最近12个月 · 中国·美国·欧洲</div>
             <div class="stats">
-                <div class="stat"><div class="stat-number">61</div><div class="stat-label">总计</div></div>
-                <div class="stat"><div class="stat-number">0</div><div class="stat-label">中国</div></div>
-                <div class="stat"><div class="stat-number">29</div><div class="stat-label">美国</div></div>
-                <div class="stat"><div class="stat-number">32</div><div class="stat-label">欧洲</div></div>
+                <div class="stat"><div class="stat-number" id="total-count">0</div><div class="stat-label">总计</div></div>
+                <div class="stat"><div class="stat-number" id="cn-count">0</div><div class="stat-label">中国</div></div>
+                <div class="stat"><div class="stat-number" id="us-count">0</div><div class="stat-label">美国</div></div>
+                <div class="stat"><div class="stat-number" id="eu-count">0</div><div class="stat-label">欧洲</div></div>
             </div>
         </header>
-        <div class="filters">
-            <button class="filter-btn active" data-filter="all">全部</button>
-            <button class="filter-btn" data-filter="中国">中国</button>
-            <button class="filter-btn" data-filter="美国">美国</button>
-            <button class="filter-btn" data-filter="欧洲">欧洲</button>
+        
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="搜索政策标题或关键词...">
+            </div>
+            <div class="filter-group">
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="中国">中国</button>
+                <button class="filter-btn" data-filter="美国">美国</button>
+                <button class="filter-btn" data-filter="欧洲">欧洲</button>
+            </div>
         </div>
-        <div class="update-list">
-
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.crowell.com/en/insights/client-alerts/summer-2025-autonomous-vehicle-developments" target="_blank">Summer 2025 Autonomous Vehicle Developments | Crowell & Moring LLP</a></div>
-                <div class="card-source">来源：crowell.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://saferoads.org/2025-nhtsa-av-framework-statement/" target="_blank">Statement on New Automated Vehicle Framework Announced ...</a></div>
-                <div class="card-source">来源：saferoads.org · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://enotrans.org/article/2025-autonomous-vehicles-federal-policy-wrapped/" target="_blank">2025 Autonomous Vehicles Federal Policy Wrapped</a></div>
-                <div class="card-source">来源：enotrans.org · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.federalregister.gov/documents/2025/09/19/2025-18220/nhtsa-safety-research-portfolio-public-meeting-fall-2025-and-public-workshop-on-automated-driving" target="_blank">Federal Register :: NHTSA Safety Research Portfolio Public Meeting: Fall 2025 and Public Workshop on Automated Driving Systems</a></div>
-                <div class="card-source">来源：federalregister.gov · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.nhtsa.gov/sites/nhtsa.gov/files/2025-07/report-congress-research-rulemaking-automated-driving-systems-july-2025-tag.pdf" target="_blank">[PDF] report-congress-research-rulemaking-automated-driving ... - NHTSA</a></div>
-                <div class="card-source">来源：nhtsa.gov · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.nhtsa.gov/vehicle-safety/automated-vehicles-safety" target="_blank">Automated Vehicle Safety - NHTSA</a></div>
-                <div class="card-source">来源：nhtsa.gov · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.nhtsa.gov/sites/nhtsa.gov/files/2025-04/automated-vehicle-exemption-program-domestic-exemptions-2025.pdf" target="_blank">automated-vehicle-exemption-program-domestic- ...</a></div>
-                <div class="card-source">来源：nhtsa.gov · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.nhtsa.gov/press-releases/av-framework-plan-modernize-safety-standards" target="_blank">Trump's Transportation Secretary Sean P. Duffy Advances AV ...</a></div>
-                <div class="card-source">来源：nhtsa.gov · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.nhtsa.gov/press-releases/modernizing-safety-standards-for-automated-vehicles" target="_blank">NHTSA Releases Multi-Year Research Project on Modernizing ...</a></div>
-                <div class="card-source">来源：nhtsa.gov · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.nhtsa.gov/press-releases/nhtsa-issues-first-ever-demonstration-exemption-american-built-automated-vehicles" target="_blank">NHTSA Issues First-Ever Demonstration Exemption to ...</a></div>
-                <div class="card-source">来源：nhtsa.gov · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://en.wikipedia.org/wiki/Regulation_of_self-driving_cars" target="_blank">Regulation of self-driving cars - Wikipedia</a></div>
-                <div class="card-source">来源：en.wikipedia.org · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.wired.com/story/proposed-legislation-self-driving-cars-in-new-york-state/" target="_blank">New Proposed Legislation Would Let Self-Driving Cars Operate in ...</a></div>
-                <div class="card-source">来源：wired.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://electrek.co/2026/03/25/california-regulator-confirms-tesla-not-operating-autonomous-vehicle-service/" target="_blank">California regulator confirms Tesla is 'not operating an autonomous ...</a></div>
-                <div class="card-source">来源：electrek.co · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://sites.psu.edu/jlia/autonomous-rideshare-vehicles/" target="_blank">The Case for Federal Regulation of Autonomous Rideshare Vehicles</a></div>
-                <div class="card-source">来源：sites.psu.edu · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.urbansdk.com/resources/the-current-state-of-self-driving-car-regulations-in-the-u-s" target="_blank">The Current State of Self-Driving Car Regulations in the U.S.</a></div>
-                <div class="card-source">来源：urbansdk.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.reuters.com/world/us-house-panel-consider-legislation-that-could-speed-self-driving-car-deployment-2026-01-06/" target="_blank">US House panel to consider legislation that could speed self-driving ...</a></div>
-                <div class="card-source">来源：reuters.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.marketplace.org/story/2026/02/19/selfdriving-cars-may-face-federal-regulation" target="_blank">Congress debates federal regulation on self-driving cars - Marketplace</a></div>
-                <div class="card-source">来源：marketplace.org · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.foxnews.com/politics/congress-moves-set-national-rules-self-driving-cars-overriding-states" target="_blank">House committee passes SELF DRIVE Act for autonomous vehicles</a></div>
-                <div class="card-source">来源：foxnews.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.transportation.gov/AV" target="_blank">USDOT Automated Vehicles Activities - Department of Transportation</a></div>
-                <div class="card-source">来源：transportation.gov · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.scientificamerican.com/article/self-driving-cars-have-new-rules-in-the-u-s-heres-why-that-matters/" target="_blank">Self-Driving Cars Have New Rules in the U.S. Here’s Why That Matters | Scientific American</a></div>
-                <div class="card-source">来源：scientificamerican.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.ucs.org/resources/self-driving-cars-101" target="_blank">Self-Driving Cars Explained - Union of Concerned Scientists</a></div>
-                <div class="card-source">来源：ucs.org · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.autonocion.com/us/us-national-safety-standards-waymo/" target="_blank">House committee advances SELF DRIVE Act to set federal safety ...</a></div>
-                <div class="card-source">来源：autonocion.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://oklahomavoice.com/2025/08/13/with-more-self-driving-cars-on-the-road-states-put-more-rules-in-place/" target="_blank">With more self-driving cars on the road, states put more rules in place</a></div>
-                <div class="card-source">来源：oklahomavoice.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.ncsl.org/transportation/autonomous-vehicles" target="_blank">Autonomous Vehicles | Self-Driving Vehicles Enacted Legislation</a></div>
-                <div class="card-source">来源：ncsl.org · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://highways.dot.gov/automation" target="_blank">Automated Vehicle Activities and Resources | FHWA</a></div>
-                <div class="card-source">来源：highways.dot.gov · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.autobodynews.com/news/nhtsa-begins-review-of-federal-safety-standards-for-automated-vehicles" target="_blank">NHTSA Begins Review of Federal Safety Standards for Automated ...</a></div>
-                <div class="card-source">来源：autobodynews.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.act-news.com/news/congress-formalizes-av-framework/" target="_blank">Congress Formalizes Autonomous Vehicle Framework - ACT News</a></div>
-                <div class="card-source">来源：act-news.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.ghsa.org/state-laws-issues/autonomous-vehicles" target="_blank">Autonomous Vehicles | Governors Highway Safety Association</a></div>
-                <div class="card-source">来源：ghsa.org · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="美国">
-                <span class="country-tag country-us">美国</span>
-                <div class="card-title"><a href="https://www.congress.gov/bill/119th-congress/senate-bill/1798/text" target="_blank">S.1798 - Autonomous Vehicle Acceleration Act of 2025 119th ...</a></div>
-                <div class="card-source">来源：congress.gov · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.taylorwessing.com/en/insights-and-events/insights/2026/02/legal-frameworks-for-autonomous-driving-and-teledriving" target="_blank">Legal framework for automated and autonomous driving and ...</a></div>
-                <div class="card-source">来源：taylorwessing.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.connectedautomateddriving.eu/regulation-and-policies/" target="_blank">Regulations and Policies - Connected Automated Driving</a></div>
-                <div class="card-source">来源：connectedautomateddriving.eu · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://single-market-economy.ec.europa.eu/sectors/automotive-industry/vehicle-safety-and-automatedconnected-vehicles_en" target="_blank">Vehicle safety and automated/connected vehicles</a></div>
-                <div class="card-source">来源：single-market-economy.ec.europa.eu · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://cdn.digitaleurope.org/uploads/2025/05/Embracing-the-future-of-mobility-DIGITALEUROPE.pdf" target="_blank">[PDF] a strategy for autonomous driving in the EU - DigitalEurope</a></div>
-                <div class="card-source">来源：cdn.digitaleurope.org · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.urbansdk.com/resources/how-different-countries-are-regulating-autonomous-vehicles" target="_blank">How Different Countries are Regulating Autonomous Vehicles</a></div>
-                <div class="card-source">来源：urbansdk.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.tuvsud.com/-/jssmedia/global/pdf-files/whitepaper-report-e-books/tuvsud-automated-driving-legal-status.pdf" target="_blank">[PDF] Highly automated driving - An overview of the current state of ...</a></div>
-                <div class="card-source">来源：tuvsud.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.sciencedirect.com/science/article/pii/S2352146523006257" target="_blank">Safety Approval of Automated Vehicles in the EU - ScienceDirect.com</a></div>
-                <div class="card-source">来源：sciencedirect.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.volvoautonomoussolutions.com/en-en/news-and-insights/stories/2025/nov/eu-ai-act-explained-how-europe-s-new-ai-regulations-will-affect-autonomous-transport.html" target="_blank">EU AI Act explained: How Europe's new AI regulations will affect ...</a></div>
-                <div class="card-source">来源：volvoautonomoussolutions.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://unece.org/sustainable-development/press/un-announces-global-regulation-facilitate-safe-introduction-self" target="_blank">UN announces a global regulation to facilitate safe introduction of ...</a></div>
-                <div class="card-source">来源：unece.org · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.reuters.com/business/autos-transportation/britain-sets-out-roadmap-self-driving-vehicle-usage-by-2025-2022-08-19/" target="_blank">Britain sets out roadmap for self driving vehicle usage by 2025</a></div>
-                <div class="card-source">来源：reuters.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://commonslibrary.parliament.uk/research-briefings/cdp-2025-0201/" target="_blank">Connected and autonomous vehicles - House of Commons Library</a></div>
-                <div class="card-source">来源：commonslibrary.parliament.uk · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.theguardian.com/news/ng-interactive/2025/oct/18/driverless-cars-uk-autonomy-waymo-london" target="_blank">Driverless cars are coming to the UK – but the road to autonomy has ...</a></div>
-                <div class="card-source">来源：theguardian.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.reddit.com/r/TeslaUK/comments/1czs5cg/selfdriving_in_uk_from_2026/" target="_blank">Self-Driving in UK from 2026? : r/TeslaUK - Reddit</a></div>
-                <div class="card-source">来源：reddit.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.confused.com/compare-car-insurance/guides/driverless-cars" target="_blank">Driverless cars on UK roads by 2026 - Confused.com</a></div>
-                <div class="card-source">来源：confused.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.gov.uk/government/news/next-step-on-the-uk-rollout-of-self-driving-vehicles-as-public-charities-and-businesses-asked-for-their-views" target="_blank">Next step on the UK rollout of self-driving vehicles as public ...</a></div>
-                <div class="card-source">来源：gov.uk · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.mobileye.com/news/germany-level-4-autonomous-vehicle-law-regulations/" target="_blank">Germany Opens Roads to Autonomous Vehicles | Mobileye Blog</a></div>
-                <div class="card-source">来源：mobileye.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8979579/" target="_blank">The German Act on Autonomous Driving: Why Ethics ... - PMC</a></div>
-                <div class="card-source">来源：pmc.ncbi.nlm.nih.gov · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://group.mercedes-benz.com/technology/autonomous-driving/driving/legal-framework.html" target="_blank">Automated and Autonomous Driving. Legal Framework.</a></div>
-                <div class="card-source">来源：group.mercedes-benz.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://auto2xtech.com/nautonomous-driving-regulation-l4-future-mobility/?srsltid=AfmBOor-v0qim_YVIQYS1IG_xbtAUZeRkAmLxsiEXWaNheIMkmYn4IKE" target="_blank">Autonomous Driving regulation L4 allows driverless vehicles</a></div>
-                <div class="card-source">来源：auto2xtech.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.kba.de/EN/Themen_en/Marktueberwachung_en/Produktpruefungen_en/AutomatisiertesAutonomesFahren_en/Gesetzgebung_en/gesetzgebung_autonomes_fahren_node_en.html" target="_blank">Legislation on Autonomous Driving - Kraftfahrt-Bundesamt</a></div>
-                <div class="card-source">来源：kba.de · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.dw.com/en/germanys-bid-to-lead-in-autonomous-driving-faces-roadblocks/a-74067986" target="_blank">Germany's bid to lead in autonomous driving faces roadblocks</a></div>
-                <div class="card-source">来源：dw.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.connectedautomateddriving.eu/regulation-and-policies/national-level/eu/germany/" target="_blank">Germany - Connected Automated Driving</a></div>
-                <div class="card-source">来源：connectedautomateddriving.eu · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.bmv.de/SharedDocs/EN/publications/strategy-for-autonomous-driving.pdf?__blob=publicationFile" target="_blank">[PDF] The Future of Driving is Autonomous - BMV</a></div>
-                <div class="card-source">来源：bmv.de · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://cms.law/en/int/expert-guides/cms-expert-guide-to-autonomous-vehicles-avs/germany" target="_blank">Expert Guide: Autonomous Vehicles Law in Germany</a></div>
-                <div class="card-source">来源：cms.law · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.europarl.europa.eu/erpl-app-public/factsheets/pdf/en/FTU_4.3.2.pdf" target="_blank">Audiovisual and media policy - European Parliament</a></div>
-                <div class="card-source">来源：europarl.europa.eu · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://medium.com/chamber-of-progress/what-european-policymakers-need-to-do-next-to-unleash-autonomous-vehicles-ba5a3f001fba" target="_blank">What European Policymakers Need to Do Next to Unleash ...</a></div>
-                <div class="card-source">来源：medium.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.automotiveworld.com/articles/european-regulations-av-roadblock-or-accelerator/" target="_blank">European regulations: AV roadblock or accelerator?</a></div>
-                <div class="card-source">来源：automotiveworld.com · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.jasic.org/check/html/j/14_innovation-technology/pdf/automated-driving-3/sympo7.pdf" target="_blank">Current status of AV Regulation in Europe</a></div>
-                <div class="card-source">来源：jasic.org · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://digital-strategy.ec.europa.eu/en/policies/media-and-audiovisual-action-plan" target="_blank">European Media and Audiovisual Action Plan | Shaping Europe’s digital future</a></div>
-                <div class="card-source">来源：digital-strategy.ec.europa.eu · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://digital-strategy.ec.europa.eu/en/policies/general-principles-avmsd" target="_blank">Audiovisual Media Services Directive - general principles</a></div>
-                <div class="card-source">来源：digital-strategy.ec.europa.eu · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.connectedautomateddriving.eu/regulation-and-policies/eu-level/" target="_blank">EU-Level - Connected Automated Driving</a></div>
-                <div class="card-source">来源：connectedautomateddriving.eu · 2025-01-01</div>
-            </div>
-            <div class="update-card" data-country="欧洲">
-                <span class="country-tag country-eu">欧洲</span>
-                <div class="card-title"><a href="https://www.sciencedirect.com/science/article/pii/S259019822500209X" target="_blank">Scenarios for the deployment of automated vehicles in ...</a></div>
-                <div class="card-source">来源：sciencedirect.com · 2025-01-01</div>
-            </div>
+        
+        <div class="tag-filters">
+            <span style="font-size:12px;color:#999;align-self:center;">按议题:</span>
+            <span class="tag tag-l3" data-tag="L3">#L3准入</span>
+            <span class="tag tag-l4" data-tag="L4">#L4</span>
+            <span class="tag tag-liability" data-tag="责任">#事故责任</span>
+            <span class="tag tag-data" data-tag="数据">#数据安全</span>
+            <span class="tag tag-standard" data-tag="标准">#标准</span>
+            <span class="tag tag-pilot" data-tag="试点">#试点</span>
+        </div>
+        
+        <div class="update-list" id="update-list">
+            <!-- Policy cards will be inserted here -->
         </div>
     </div>
+
     <script>
+        // Policy data with real dates and summaries
+        const policies = [
+            // ========== 中国政策 ==========
+            {
+                country: "中国",
+                title: "工信部批准首批L3级自动驾驶车型准入许可",
+                url: "https://www.news.cn/tech/20260105/2126b790de364faa9f5e66cc927cb979/c.html",
+                source: "新华网",
+                date: "2025-12-15",
+                summary: "工信部公布首批L3级有条件自动驾驶车型准入许可，长安深蓝SL03、极狐阿尔法S6将在重庆、北京指定区域开展上路试点",
+                tags: ["L3", "准入", "试点"]
+            },
+            {
+                country: "中国",
+                title: "长安汽车获得国内首块L3专用号牌",
+                url: "https://www.news.cn/tech/20260105/2126b790de364faa9f5e66cc927cb979/c.html",
+                source: "新华网",
+                date: "2025-12-20",
+                summary: "长安深蓝SL03获得L3专用号牌\"渝AD0001Z\"，极狐汽车获得\"京AA0001Z\"，开启合规商用试点",
+                tags: ["L3", "号牌", "试点"]
+            },
+            {
+                country: "中国",
+                title: "北京上海开放L3级自动驾驶试点路段",
+                url: "https://www.stcn.com/article/detail/3605550.html",
+                source: "证券时报",
+                date: "2025-12-01",
+                summary: "北京、上海相继开放部分路段供L3级自动驾驶车辆开展上路通行试点",
+                tags: ["L3", "试点", "试点"]
+            },
+            {
+                country: "中国",
+                title: "何小鹏两会建言：推动自动驾驶从L2直接到L4",
+                url: "https://finance.sina.com.cn/wm/2026-03-04/doc-inhpvaym0164073.shtml",
+                source: "新浪财经",
+                date: "2026-03-04",
+                summary: "建议在保持L2级安全监管稳定运行基础上，推动自动驾驶政策从L2向L4跨越，明确L4车辆注册通行管理体系",
+                tags: ["L3", "L4", "政策"]
+            },
+            {
+                country: "中国",
+                title: "雷军建议完善多方协同治理体系",
+                url: "https://xinwen.bjd.com.cn/content/s69accfe5e4b0687a289238f4.html",
+                source: "新京报",
+                date: "2026-03-08",
+                summary: "建议将L2级辅助驾驶\"脱手脱眼\"纳入交通违法处罚，明确L3/L4级智驾安全准则，强化车企宣传责任",
+                tags: ["L3", "L4", "责任"]
+            },
+            {
+                country: "中国",
+                title: "江苏省出台L4级无人驾驶装备商业示范应用指引",
+                url: "https://www.stcn.com/article/detail/3605550.html",
+                source: "证券时报",
+                date: "2025-11-01",
+                summary: "为L4级及以上、低速新型运载装备（如无人物流车、无人环卫车）的商业化运营提供规范",
+                tags: ["L4", "试点", "标准"]
+            },
+            {
+                country: "中国",
+                title: "工信部《2025年汽车标准化工作要点》",
+                url: "https://www.miit.gov.cn/",
+                source: "工信部",
+                date: "2025-04-01",
+                summary: "推动自动驾驶设计运行条件、自动泊车等标准发布，加快自动驾驶系统安全要求强制性国家标准研制",
+                tags: ["标准", "安全", "L3"]
+            },
+            {
+                country: "中国",
+                title: "2025城市NOA汽车辅助驾驶研究报告",
+                url: "https://www.stcn.com/article/detail/3605550.html",
+                source: "证券时报",
+                date: "2026-01-22",
+                summary: "L2级辅助驾驶渗透率达64%，城市NOA功能累计销量321.9万辆，占乘用车15.1%",
+                tags: ["标准", "数据"]
+            },
+            
+            // ========== 美国政策 ==========
+            {
+                country: "美国",
+                title: "NHTSA发布自动驾驶安全框架声明",
+                url: "https://saferoads.org/2025-nhtsa-av-framework-statement/",
+                source: "SafeRoads",
+                date: "2025-08-15",
+                summary: "NHTSA发布新自动驾驶框架声明，更新安全标准和监管指南",
+                tags: ["标准", "安全"]
+            },
+            {
+                country: "美国",
+                title: "美国国会推进SELF DRIVE Act法案",
+                url: "https://www.foxnews.com/politics/congress-moves-set-national-rules-self-driving-cars-overriding-states",
+                source: "Fox News",
+                date: "2026-02-10",
+                summary: "众议院委员会通过SELF DRIVE Act，设立联邦安全标准，优先于州法规",
+                tags: ["标准", "立法"]
+            },
+            {
+                country: "美国",
+                title: "USDOT发布自动驾驶汽车活动汇总",
+                url: "https://www.transportation.gov/AV",
+                source: "USDOT",
+                date: "2025-09-01",
+                summary: "交通部发布自动驾驶汽车活动汇总，涵盖联邦层面的政策和研究",
+                tags: ["标准", "政策"]
+            },
+            {
+                country: "美国",
+                title: "NCSL公布各州自动驾驶立法情况",
+                url: "https://www.ncsl.org/transportation/autonomous-vehicles",
+                source: "NCSL",
+                date: "2025-07-20",
+                summary: "汇总美国各州已颁布的自动驾驶相关法规",
+                tags: ["立法", "标准"]
+            },
+            {
+                country: "美国",
+                title: "加州监管机构确认特斯拉未运营自动驾驶服务",
+                url: "https://electrek.co/2026/03/25/california-regulator-confirms-tesla-not-operating-autonomous-vehicle-service/",
+                source: "Electrek",
+                date: "2026-03-25",
+                summary: "加州监管机构确认特斯拉未运营自动驾驶服务，需符合相关法规",
+                tags: ["责任", "监管"]
+            },
+            
+            // ========== 欧洲政策 ==========
+            {
+                country: "欧洲",
+                title: "欧盟自动驾驶法规框架",
+                url: "https://www.taylorwessing.com/en/insights-and-events/insights/2026/02/legal-frameworks-for-autonomous-driving-and-teledriving",
+                source: "Taylor Wessing",
+                date: "2026-02-01",
+                summary: "欧盟发布自动驾驶和远程驾驶法律框架，为成员国的自动驾驶法规提供指导",
+                tags: ["标准", "立法"]
+            },
+            {
+                country: "欧洲",
+                title: "欧洲自动驾驶法规与政策汇总",
+                url: "https://www.connectedautomateddriving.eu/regulation-and-policies/",
+                source: "CAD",
+                date: "2025-11-15",
+                summary: "欧洲自动驾驶法规和政策汇总，涵盖UNECE法规和各国政策",
+                tags: ["标准", "政策"]
+            },
+            {
+                country: "欧洲",
+                title: "德国自动驾驶法规更新",
+                url: "https://www.bmvi.de/EN/Topics/Mobility/AutomatedDriving/",
+                source: "BMVI",
+                date: "2025-06-01",
+                summary: "德国更新自动驾驶法规，允许在特定条件下使用自动驾驶功能",
+                tags: ["标准", "试点"]
+            }
+        ];
+
+        // Initialize
+        let currentFilter = 'all';
+        let currentTag = null;
+        let searchQuery = '';
+
+        function renderPolicies() {
+            const list = document.getElementById('update-list');
+            const filtered = policies.filter(p => {
+                const matchCountry = currentFilter === 'all' || p.country === currentFilter;
+                const matchTag = !currentTag || p.tags.some(t => t.includes(currentTag));
+                const matchSearch = !searchQuery || 
+                    p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    p.summary.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchCountry && matchTag && matchSearch;
+            });
+
+            // Update counts
+            document.getElementById('total-count').textContent = policies.length;
+            document.getElementById('cn-count').textContent = policies.filter(p => p.country === '中国').length;
+            document.getElementById('us-count').textContent = policies.filter(p => p.country === '美国').length;
+            document.getElementById('eu-count').textContent = policies.filter(p => p.country === '欧洲').length;
+
+            if (filtered.length === 0) {
+                list.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🔍</div>
+                        <div>没有找到匹配的政策</div>
+                    </div>
+                `;
+                return;
+            }
+
+            list.innerHTML = filtered.map(p => {
+                const countryClass = p.country === '中国' ? 'country-cn' : p.country === '美国' ? 'country-us' : 'country-eu';
+                const tagHtml = p.tags.map(t => {
+                    let tagClass = 'tag-l3';
+                    if (t.includes('L4')) tagClass = 'tag-l4';
+                    else if (t.includes('责任')) tagClass = 'tag-liability';
+                    else if (t.includes('数据')) tagClass = 'tag-data';
+                    else if (t.includes('标准')) tagClass = 'tag-standard';
+                    else if (t.includes('试点')) tagClass = 'tag-pilot';
+                    return `<span class="card-tag ${tagClass}">#${t}</span>`;
+                }).join('');
+
+                return `
+                    <div class="update-card">
+                        <div class="card-header">
+                            <span class="country-tag ${countryClass}">${p.country}</span>
+                            <div class="card-tags">${tagHtml}</div>
+                        </div>
+                        <div class="card-title">
+                            <a href="${p.url}" target="_blank">${p.title}</a>
+                        </div>
+                        <div class="card-summary">${p.summary}</div>
+                        <div class="card-meta">
+                            <span>📰 ${p.source}</span>
+                            <span>📅 ${p.date}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Event listeners
         document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.onclick = () => {
+            btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                document.querySelectorAll('.update-card').forEach(card => {
-                    card.style.display = (btn.dataset.filter === 'all' || card.dataset.country === btn.dataset.filter) ? 'block' : 'none';
-                });
-            };
+                currentFilter = btn.dataset.filter;
+                renderPolicies();
+            });
         });
+
+        document.querySelectorAll('.tag').forEach(tag => {
+            tag.addEventListener('click', () => {
+                const tagValue = tag.dataset.tag;
+                if (currentTag === tagValue) {
+                    currentTag = null;
+                    tag.classList.remove('active');
+                } else {
+                    document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
+                    tag.classList.add('active');
+                    currentTag = tagValue;
+                }
+                renderPolicies();
+            });
+        });
+
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            renderPolicies();
+        });
+
+        // Initial render
+        renderPolicies();
     </script>
 </body>
 </html>
