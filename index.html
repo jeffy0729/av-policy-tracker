@@ -3,80 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <title>自动驾驶政策法规最新动态</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0f2f5; padding: 20px; }
-        .container { max-width: 1200px; margin: 0 auto; }
+        body { 
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif; 
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0d1b2a 100%);
+            min-height: 100vh;
+            padding: 24px;
+        }
+        
+        .container { max-width: 1400px; margin: 0 auto; }
         
         /* Header */
-        header { background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; padding: 30px; border-radius: 16px; margin-bottom: 24px; }
-        header h1 { margin: 0 0 8px 0; font-size: 28px; }
-        header .subtitle { opacity: 0.8; font-size: 14px; margin-bottom: 20px; }
-        .stats { display: flex; gap: 24px; flex-wrap: wrap; }
-        .stat { text-align: center; min-width: 80px; }
-        .stat-number { font-size: 28px; font-weight: bold; }
-        .stat-label { font-size: 12px; opacity: 0.8; }
+        header { 
+            background: linear-gradient(135deg, rgba(0,212,255,0.15) 0%, rgba(0,100,200,0.1) 100%);
+            border: 1px solid rgba(0,212,255,0.3);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+        header h1 { 
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 32px;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        header h1 span { color: #00d4ff; }
+        header .subtitle { color: rgba(255,255,255,0.6); font-size: 14px; margin-bottom: 24px; }
+        
+        .stats { display: flex; gap: 20px; flex-wrap: wrap; }
+        .stat { 
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(0,212,255,0.2);
+            border-radius: 16px;
+            padding: 16px 24px;
+            text-align: center;
+            min-width: 100px;
+            backdrop-filter: blur(5px);
+        }
+        .stat-number { 
+            font-family: 'Orbitron', sans-serif;
+            font-size: 32px; 
+            font-weight: bold; 
+            color: #00d4ff;
+            text-shadow: 0 0 20px rgba(0,212,255,0.5);
+        }
+        .stat-label { color: rgba(255,255,255,0.6); font-size: 12px; margin-top: 4px; }
         
         /* Search & Filter */
-        .controls { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
-        .search-box { flex: 1; min-width: 200px; position: relative; }
-        .search-box input { width: 100%; padding: 12px 16px 12px 44px; border: none; border-radius: 12px; font-size: 15px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
-        .search-box::before { content: '🔍'; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 16px; }
+        .controls { display: flex; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+        .search-box { flex: 1; min-width: 250px; position: relative; }
+        .search-box input { 
+            width: 100%;
+            padding: 14px 20px 14px 50px; 
+            border: 1px solid rgba(0,212,255,0.3);
+            border-radius: 12px; 
+            font-size: 15px;
+            background: rgba(0,0,0,0.4);
+            color: #fff;
+            backdrop-filter: blur(5px);
+        }
+        .search-box input::placeholder { color: rgba(255,255,255,0.4); }
+        .search-box input:focus { outline: none; border-color: #00d4ff; box-shadow: 0 0 20px rgba(0,212,255,0.2); }
+        .search-box::before { 
+            content: '⚡'; 
+            position: absolute; 
+            left: 16px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            font-size: 18px; 
+        }
         
-        .filter-group { display: flex; gap: 8px; flex-wrap: wrap; }
-        .filter-btn { padding: 10px 18px; border: none; border-radius: 20px; background: white; cursor: pointer; font-size: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: all 0.2s; }
-        .filter-btn:hover { transform: translateY(-1px); }
-        .filter-btn.active { background: #1a1a2e; color: white; }
+        .filter-group { display: flex; gap: 10px; flex-wrap: wrap; }
+        .filter-btn { 
+            padding: 12px 24px; 
+            border: 1px solid rgba(0,212,255,0.3);
+            border-radius: 25px; 
+            background: rgba(0,0,0,0.3);
+            color: #fff;
+            cursor: pointer; 
+            font-size: 14px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+        .filter-btn:hover { 
+            transform: translateY(-2px);
+            border-color: #00d4ff;
+        }
+        .filter-btn.active { 
+            background: linear-gradient(135deg, #00d4ff, #0064c8);
+            border-color: transparent;
+            box-shadow: 0 0 20px rgba(0,212,255,0.4);
+        }
         
-        .tag-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
-        .tag { padding: 4px 12px; border-radius: 12px; font-size: 12px; cursor: pointer; transition: all 0.2s; }
+        .tag-filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; align-items: center; }
+        .tag-label { color: rgba(255,255,255,0.5); font-size: 13px; }
+        .tag { 
+            padding: 6px 14px; 
+            border-radius: 20px; 
+            font-size: 12px; 
+            cursor: pointer; 
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
         .tag:hover { transform: scale(1.05); }
-        .tag.active { font-weight: bold; }
-        .tag-l3 { background: #e8f5e9; color: #2e7d32; }
-        .tag-l3.active { background: #2e7d32; color: white; }
-        .tag-l4 { background: #e3f2fd; color: #1565c0; }
-        .tag-l4.active { background: #1565c0; color: white; }
-        .tag-liability { background: #fff3e0; color: #e65100; }
-        .tag-liability.active { background: #e65100; color: white; }
-        .tag-data { background: #f3e5f5; color: #7b1fa2; }
-        .tag-data.active { background: #7b1fa2; color: white; }
-        .tag-standard { background: #e0f2f1; color: #00695c; }
-        .tag-standard.active { background: #00695c; color: white; }
-        .tag-pilot { background: #fce4ec; color: #c2185b; }
-        .tag-pilot.active { background: #c2185b; color: white; }
+        .tag.active { font-weight: bold; border-color: #fff; }
+        .tag-l3 { background: rgba(46,125,50,0.4); color: #a5d6a7; }
+        .tag-l3.active { background: #2e7d32; color: #fff; }
+        .tag-l4 { background: rgba(21,101,192,0.4); color: #90caf9; }
+        .tag-l4.active { background: #1565c0; color: #fff; }
+        .tag-liability { background: rgba(230,81,0,0.4); color: #ffcc80; }
+        .tag-liability.active { background: #e65100; color: #fff; }
+        .tag-data { background: rgba(123,31,162,0.4); color: #ce93d8; }
+        .tag-data.active { background: #7b1fa2; color: #fff; }
+        .tag-standard { background: rgba(0,105,92,0.4); color: #80cbc4; }
+        .tag-standard.active { background: #00695c; color: #fff; }
+        .tag-pilot { background: rgba(194,24,91,0.4); color: #f48fb1; }
+        .tag-pilot.active { background: #c2185b; color: #fff; }
         
-        /* Policy Cards */
-        .update-list { display: flex; flex-direction: column; gap: 12px; }
-        .update-card { background: white; border-radius: 12px; padding: 18px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: all 0.2s; }
-        .update-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        /* Policy Cards Grid */
+        .update-list { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 16px; 
+        }
+        .update-card { 
+            background: linear-gradient(145deg, rgba(30,30,60,0.8), rgba(20,20,40,0.9));
+            border: 1px solid rgba(0,212,255,0.15);
+            border-radius: 16px; 
+            padding: 20px; 
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+        .update-card:hover { 
+            transform: translateY(-4px);
+            border-color: rgba(0,212,255,0.5);
+            box-shadow: 0 8px 32px rgba(0,212,255,0.15);
+        }
         
-        .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
-        .country-tag { padding: 4px 12px; border-radius: 12px; font-size: 12px; color: white; font-weight: 500; }
-        .country-cn { background: #e53935; }
-        .country-us { background: #1976d2; }
-        .country-eu { background: #7b1fa2; }
+        .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+        .country-tag { 
+            padding: 5px 14px; 
+            border-radius: 20px; 
+            font-size: 12px; 
+            color: #fff; 
+            font-weight: 500;
+        }
+        .country-cn { background: linear-gradient(135deg, #e53935, #c62828); }
+        .country-us { background: linear-gradient(135deg, #1976d2, #0d47a1); }
+        .country-eu { background: linear-gradient(135deg, #7b1fa2, #4a148c); }
         
         .card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-        .card-tag { padding: 2px 8px; border-radius: 8px; font-size: 11px; }
+        .card-tag { padding: 3px 10px; border-radius: 12px; font-size: 11px; }
         
-        .card-title { font-size: 16px; margin: 8px 0; line-height: 1.5; }
-        .card-title a { color: #1a1a2e; text-decoration: none; }
-        .card-title a:hover { color: #1976d2; }
+        .card-title { 
+            font-size: 16px; 
+            margin: 10px 0; 
+            line-height: 1.5;
+            font-weight: 500;
+        }
+        .card-title a { 
+            color: #fff; 
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .card-title a:hover { color: #00d4ff; }
         
-        .card-summary { color: #666; font-size: 14px; margin: 8px 0; line-height: 1.6; }
+        .card-summary { 
+            color: rgba(255,255,255,0.7); 
+            font-size: 13px; 
+            margin: 12px 0; 
+            line-height: 1.6;
+        }
         
-        .card-meta { display: flex; gap: 16px; color: #999; font-size: 12px; margin-top: 10px; flex-wrap: wrap; }
-        .card-meta span { display: flex; align-items: center; gap: 4px; }
+        .card-meta { 
+            display: flex; 
+            gap: 16px; 
+            color: rgba(255,255,255,0.5); 
+            font-size: 12px; 
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
         
-        .empty-state { text-align: center; padding: 60px 20px; color: #999; }
-        .empty-state-icon { font-size: 48px; margin-bottom: 16px; }
+        /* Empty State */
+        .empty-state { 
+            text-align: center; 
+            padding: 80px 20px;
+            grid-column: 1 / -1;
+        }
+        .empty-state-icon { 
+            font-size: 80px; 
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .empty-state-title {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+        .empty-state-text {
+            color: rgba(255,255,255,0.6);
+            font-size: 16px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .update-list { grid-template-columns: 1fr; }
+            header h1 { font-size: 24px; }
+            .stats { justify-content: center; }
+            .controls { flex-direction: column; }
+            .filter-group { justify-content: center; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🚗 自动驾驶政策法规最新动态</h1>
-            <div class="subtitle">最近12个月 · 中国·美国·欧洲</div>
+            <h1>🚗 <span>自动驾驶</span> 政策法规最新动态</h1>
+            <div class="subtitle">最近12个月 · 中国🇨🇳 美国🇺🇸 欧洲🇪🇺</div>
             <div class="stats">
                 <div class="stat"><div class="stat-number" id="total-count">0</div><div class="stat-label">总计</div></div>
                 <div class="stat"><div class="stat-number" id="cn-count">0</div><div class="stat-label">中国</div></div>
@@ -90,15 +243,15 @@
                 <input type="text" id="search-input" placeholder="搜索政策标题或关键词...">
             </div>
             <div class="filter-group">
-                <button class="filter-btn active" data-filter="all">全部</button>
-                <button class="filter-btn" data-filter="中国">中国</button>
-                <button class="filter-btn" data-filter="美国">美国</button>
-                <button class="filter-btn" data-filter="欧洲">欧洲</button>
+                <button class="filter-btn active" data-filter="all">🌐 全部</button>
+                <button class="filter-btn" data-filter="中国">🇨🇳 中国</button>
+                <button class="filter-btn" data-filter="美国">🇺🇸 美国</button>
+                <button class="filter-btn" data-filter="欧洲">🇪🇺 欧洲</button>
             </div>
         </div>
         
         <div class="tag-filters">
-            <span style="font-size:12px;color:#999;align-self:center;">按议题:</span>
+            <span class="tag-label">按议题:</span>
             <span class="tag tag-l3" data-tag="L3">#L3准入</span>
             <span class="tag tag-l4" data-tag="L4">#L4</span>
             <span class="tag tag-liability" data-tag="责任">#事故责任</span>
@@ -141,7 +294,7 @@
                 source: "证券时报",
                 date: "2025-12-01",
                 summary: "北京、上海相继开放部分路段供L3级自动驾驶车辆开展上路通行试点",
-                tags: ["L3", "试点", "试点"]
+                tags: ["L3", "试点"]
             },
             {
                 country: "中国",
@@ -291,8 +444,9 @@
             if (filtered.length === 0) {
                 list.innerHTML = `
                     <div class="empty-state">
-                        <div class="empty-state-icon">🔍</div>
-                        <div>没有找到匹配的政策</div>
+                        <div class="empty-state-icon">🚗💨</div>
+                        <div class="empty-state-title">数据采集中</div>
+                        <div class="empty-state-text">自动驾驶政策正在来的路上，敬请期待～</div>
                     </div>
                 `;
                 return;
