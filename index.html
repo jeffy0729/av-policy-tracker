@@ -2,659 +2,335 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>自动驾驶政策法规最新动态</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif; 
-            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0d1b2a 100%);
-            min-height: 100vh;
-            padding: 24px;
-        }
-        
-        .container { max-width: 1400px; margin: 0 auto; }
-        
-        /* Header */
-        header { 
-            background: linear-gradient(135deg, rgba(0,212,255,0.15) 0%, rgba(0,100,200,0.1) 100%);
-            border: 1px solid rgba(0,212,255,0.3);
-            border-radius: 20px;
-            padding: 32px;
-            margin-bottom: 24px;
-            backdrop-filter: blur(10px);
-        }
-        header h1 { 
-            font-family: 'Orbitron', sans-serif;
-            color: #fff;
-            font-size: 32px;
-            margin-bottom: 8px;
-            letter-spacing: 2px;
-        }
-        header h1 span { color: #00d4ff; }
-        header .subtitle { color: rgba(255,255,255,0.6); font-size: 14px; margin-bottom: 24px; }
-        
-        .stats { display: flex; gap: 20px; flex-wrap: wrap; }
-        .stat { 
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(0,212,255,0.2);
-            border-radius: 16px;
-            padding: 16px 24px;
-            text-align: center;
-            min-width: 100px;
-            backdrop-filter: blur(5px);
-        }
-        .stat-number { 
-            font-family: 'Orbitron', sans-serif;
-            font-size: 32px; 
-            font-weight: bold; 
-            color: #00d4ff;
-            text-shadow: 0 0 20px rgba(0,212,255,0.5);
-        }
-        .stat-label { color: rgba(255,255,255,0.6); font-size: 12px; margin-top: 4px; }
-        
-        /* Search & Filter */
-        .controls { display: flex; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
-        .search-box { flex: 1; min-width: 250px; position: relative; }
-        .search-box input { 
-            width: 100%;
-            padding: 14px 20px 14px 50px; 
-            border: 1px solid rgba(0,212,255,0.3);
-            border-radius: 12px; 
-            font-size: 15px;
-            background: rgba(0,0,0,0.4);
-            color: #fff;
-            backdrop-filter: blur(5px);
-        }
-        .search-box input::placeholder { color: rgba(255,255,255,0.4); }
-        .search-box input:focus { outline: none; border-color: #00d4ff; box-shadow: 0 0 20px rgba(0,212,255,0.2); }
-        .search-box::before { 
-            content: '⚡'; 
-            position: absolute; 
-            left: 16px; 
-            top: 50%; 
-            transform: translateY(-50%); 
-            font-size: 18px; 
-        }
-        
-        .filter-group { display: flex; gap: 10px; flex-wrap: wrap; }
-        .filter-btn { 
-            padding: 12px 24px; 
-            border: 1px solid rgba(0,212,255,0.3);
-            border-radius: 25px; 
-            background: rgba(0,0,0,0.3);
-            color: #fff;
-            cursor: pointer; 
-            font-size: 14px;
-            backdrop-filter: blur(5px);
-            transition: all 0.3s;
-        }
-        .filter-btn:hover { 
-            transform: translateY(-2px);
-            border-color: #00d4ff;
-        }
-        .filter-btn.active { 
-            background: linear-gradient(135deg, #00d4ff, #0064c8);
-            border-color: transparent;
-            box-shadow: 0 0 20px rgba(0,212,255,0.4);
-        }
-        
-        .tag-filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; align-items: center; }
-        .tag-label { color: rgba(255,255,255,0.5); font-size: 13px; }
-        .tag { 
-            padding: 6px 14px; 
-            border-radius: 20px; 
-            font-size: 12px; 
-            cursor: pointer; 
-            transition: all 0.3s;
-            border: 1px solid transparent;
-        }
-        .tag:hover { transform: scale(1.05); }
-        .tag.active { font-weight: bold; border-color: #fff; }
-        .tag-l3 { background: rgba(46,125,50,0.4); color: #a5d6a7; }
-        .tag-l3.active { background: #2e7d32; color: #fff; }
-        .tag-l4 { background: rgba(21,101,192,0.4); color: #90caf9; }
-        .tag-l4.active { background: #1565c0; color: #fff; }
-        .tag-liability { background: rgba(230,81,0,0.4); color: #ffcc80; }
-        .tag-liability.active { background: #e65100; color: #fff; }
-        .tag-data { background: rgba(123,31,162,0.4); color: #ce93d8; }
-        .tag-data.active { background: #7b1fa2; color: #fff; }
-        .tag-standard { background: rgba(0,105,92,0.4); color: #80cbc4; }
-        .tag-standard.active { background: #00695c; color: #fff; }
-        .tag-pilot { background: rgba(194,24,91,0.4); color: #f48fb1; }
-        .tag-pilot.active { background: #c2185b; color: #fff; }
-        
-        /* Timeline Section */
-        .timeline-section {
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(0,212,255,0.2);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 24px;
-            backdrop-filter: blur(10px);
-        }
-        .timeline-title {
-            color: #fff;
-            font-size: 18px;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .timeline {
-            display: flex;
-            gap: 0;
-            overflow-x: auto;
-            padding: 10px 0;
-        }
-        .timeline-item {
-            flex: 0 0 auto;
-            min-width: 120px;
-            text-align: center;
-            position: relative;
-        }
-        .timeline-item::after {
-            content: '→';
-            position: absolute;
-            right: -10px;
-            top: 20px;
-            color: rgba(0,212,255,0.5);
-            font-size: 20px;
-        }
-        .timeline-item:last-child::after { display: none; }
-        .timeline-date {
-            color: #00d4ff;
-            font-size: 12px;
-            margin-bottom: 4px;
-        }
-        .timeline-dot {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #00d4ff, #0064c8);
-            margin: 0 auto 8px;
-            box-shadow: 0 0 10px rgba(0,212,255,0.5);
-        }
-        .timeline-label {
-            color: rgba(255,255,255,0.8);
-            font-size: 11px;
-        }
-        
-        /* Policy Cards Grid */
-        .update-list { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 16px; 
-        }
-        .update-card { 
-            background: linear-gradient(145deg, rgba(30,30,60,0.8), rgba(20,20,40,0.9));
-            border: 1px solid rgba(0,212,255,0.15);
-            border-radius: 16px; 
-            padding: 20px; 
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        .update-card:hover { 
-            transform: translateY(-4px);
-            border-color: rgba(0,212,255,0.5);
-            box-shadow: 0 8px 32px rgba(0,212,255,0.15);
-        }
-        
-        .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; justify-content: space-between; }
-        .card-header-left { display: flex; align-items: center; gap: 10px; }
-        .country-tag { 
-            padding: 5px 14px; 
-            border-radius: 20px; 
-            font-size: 12px; 
-            color: #fff; 
-            font-weight: 500;
-        }
-        .country-cn { background: linear-gradient(135deg, #e53935, #c62828); }
-        .country-us { background: linear-gradient(135deg, #1976d2, #0d47a1); }
-        .country-eu { background: linear-gradient(135deg, #7b1fa2, #4a148c); }
-        
-        .card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-        .card-tag { padding: 3px 10px; border-radius: 12px; font-size: 11px; }
-        
-        .card-title { 
-            font-size: 16px; 
-            margin: 10px 0; 
-            line-height: 1.5;
-            font-weight: 500;
-            color: #fff;
-        }
-        
-        .card-summary { 
-            color: rgba(255,255,255,0.7); 
-            font-size: 13px; 
-            margin: 12px 0; 
-            line-height: 1.6;
-        }
-        
-        .card-detail {
-            display: none;
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        .card-detail.show { display: block; }
-        .card-detail-title {
-            color: #00d4ff;
-            font-size: 13px;
-            margin-bottom: 8px;
-        }
-        .card-detail-content {
-            color: rgba(255,255,255,0.6);
-            font-size: 12px;
-            line-height: 1.6;
-        }
-        
-        .card-meta { 
-            display: flex; 
-            gap: 16px; 
-            color: rgba(255,255,255,0.5); 
-            font-size: 12px; 
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        .card-meta a { color: #00d4ff; text-decoration: none; }
-        .card-meta a:hover { text-decoration: underline; }
-        
-        /* Empty State */
-        .empty-state { 
-            text-align: center; 
-            padding: 80px 20px;
-            grid-column: 1 / -1;
-        }
-        .empty-state-icon { 
-            font-size: 80px; 
-            margin-bottom: 20px;
-            animation: float 3s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        .empty-state-title {
-            font-family: 'Orbitron', sans-serif;
-            color: #fff;
-            font-size: 24px;
-            margin-bottom: 12px;
-        }
-        .empty-state-text {
-            color: rgba(255,255,255,0.6);
-            font-size: 16px;
-        }
-        
-        /* Last Update */
-        .last-update {
-            text-align: center;
-            color: rgba(255,255,255,0.4);
-            font-size: 12px;
-            margin-top: 24px;
-            padding: 16px;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .update-list { grid-template-columns: 1fr; }
-            header h1 { font-size: 24px; }
-            .stats { justify-content: center; }
-            .controls { flex-direction: column; }
-            .filter-group { justify-content: center; }
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 40px 30px; border-radius: 16px; margin-bottom: 30px; }
+        h1 { font-size: 32px; margin-bottom: 10px; }
+        .subtitle { opacity: 0.8; font-size: 14px; }
+        .stats { display: flex; gap: 30px; margin-top: 20px; }
+        .stat { text-align: center; }
+        .stat-number { font-size: 28px; font-weight: bold; }
+        .stat-label { font-size: 12px; opacity: 0.7; }
+        .filters { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .filter-btn { padding: 8px 16px; border: none; border-radius: 20px; background: white; color: #333; cursor: pointer; font-size: 14px; transition: all 0.3s; }
+        .filter-btn.active { background: #1a1a2e; color: white; }
+        .filter-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .update-list { display: grid; gap: 16px; }
+        .update-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: all 0.3s; }
+        .update-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+        .country-tag { padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500; }
+        .country-cn { background: #e74c3c; color: white; }
+        .country-us { background: #3498db; color: white; }
+        .type-tag { padding: 4px 8px; border-radius: 8px; font-size: 11px; background: #27ae60; color: white; }
+        .date { color: #999; font-size: 13px; }
+        .card-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; line-height: 1.5; }
+        .card-title a { color: #333; text-decoration: none; }
+        .card-title a:hover { color: #1a1a2e; }
+        .card-source { color: #999; font-size: 13px; }
+        .empty-state { text-align: center; padding: 60px 20px; color: #999; }
+        footer { text-align: center; padding: 30px; color: #999; font-size: 13px; }
+        .last-update { margin-top: 10px; }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🚗 <span>自动驾驶</span> 政策法规最新动态</h1>
-            <div class="subtitle">最近12个月 · 中国🇨🇳 美国🇺🇸 欧洲🇪🇺</div>
+            <h1>🚗 自动驾驶政策法规最新动态</h1>
+            <div class="subtitle">最近3个月 | 中国政府网 | 交通运输部 | 工信部 | 美国交通部 | 官方政策文件</div>
             <div class="stats">
-                <div class="stat"><div class="stat-number" id="total-count">0</div><div class="stat-label">总计</div></div>
-                <div class="stat"><div class="stat-number" id="cn-count">0</div><div class="stat-label">中国</div></div>
-                <div class="stat"><div class="stat-number" id="us-count">0</div><div class="stat-label">美国</div></div>
-                <div class="stat"><div class="stat-number" id="eu-count">0</div><div class="stat-label">欧洲</div></div>
+                <div class="stat">
+                    <div class="stat-number">17</div>
+                    <div class="stat-label">政策总数</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">17</div>
+                    <div class="stat-label">中国</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">美国</div>
+                </div>
             </div>
         </header>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="中国">中国</button>
+            <button class="filter-btn" data-filter="美国">美国</button>
+        </div>
         
-        <div class="controls">
-            <div class="search-box">
-                <input type="text" id="search-input" placeholder="搜索政策标题或关键词...">
+        <div class="update-list">
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="country-tag country-cn">中国</span>
+                        <span class="type-tag">📄 官方文件</span>
+                    </div>
+                    <span class="date">2027-07-01</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://std.samr.gov.cn/gb/search/gbDetailed?id=473DB2F0DC56BDA1E06397BE0A0AB1B7" target="_blank">国家标准计划 - 全国标准信息公共服务平台</a>
+                </div>
+                <div class="card-source">来源：std.samr.gov.cn</div>
             </div>
-            <div class="filter-group">
-                <button class="filter-btn active" data-filter="all">🌐 全部</button>
-                <button class="filter-btn" data-filter="中国">🇨🇳 中国</button>
-                <button class="filter-btn" data-filter="美国">🇺🇸 美国</button>
-                <button class="filter-btn" data-filter="欧洲">🇪🇺 欧洲</button>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="country-tag country-cn">中国</span>
+                        <span class="type-tag">📄 官方文件</span>
+                    </div>
+                    <span class="date">2026-12-31</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.zs.gov.cn/zsjxj/gkmlpt/content/2/2582/post_2582830.html" target="_blank">【文字解读】中山市智能网联汽车道路测试与示范应用实施细则 ...</a>
+                </div>
+                <div class="card-source">来源：zs.gov.cn</div>
             </div>
-        </div>
-        
-        <div class="tag-filters">
-            <span class="tag-label">按议题:</span>
-            <span class="tag tag-l3" data-tag="L3">#L3准入</span>
-            <span class="tag tag-l4" data-tag="L4">#L4</span>
-            <span class="tag tag-liability" data-tag="责任">#事故责任</span>
-            <span class="tag tag-data" data-tag="数据">#数据安全</span>
-            <span class="tag tag-standard" data-tag="标准">#标准</span>
-            <span class="tag tag-pilot" data-tag="试点">#试点</span>
-        </div>
-        
-        <!-- Timeline Section -->
-        <div class="timeline-section">
-            <div class="timeline-title">📊 政策发布时间线</div>
-            <div class="timeline" id="timeline">
-                <!-- Timeline will be generated by JS -->
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="country-tag country-cn">中国</span>
+                        <span class="type-tag">📄 官方文件</span>
+                    </div>
+                    <span class="date">2026-03-27</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.yantai.gov.cn/col/col43370/art/2026/art_49a21d7eb8374c07bf56009d6b8bd29a.html?type=FUaRhQW7Lo9974tywtQmQ" target="_blank">文字解读丨《烟台市低速自动驾驶装备道路测试与商业示范管理实施细则（试行）》</a>
+                </div>
+                <div class="card-source">来源：yantai.gov.cn</div>
             </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="country-tag country-cn">中国</span>
+                        <span class="type-tag">📄 官方文件</span>
+                    </div>
+                    <span class="date">2026-03-27</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://gaj.beijing.gov.cn/wsgs/2024zcwj/zcfg/202603/t20260330_4569738.html" target="_blank">政策法规_北京市公安局</a>
+                </div>
+                <div class="card-source">来源：gaj.beijing.gov.cn</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="country-tag country-cn">中国</span>
+                        <span class="type-tag">📄 官方文件</span>
+                    </div>
+                    <span class="date">2026-03-24</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.yantai.gov.cn/col/col99956/art/2026/art_77c4e1d1a32f447db1034e195600d46d.html" target="_blank">烟台市工业和信息化局关于印发《烟台市低速自动驾驶装备道路测试与商业示范管理实施细则（试行）》的通知</a>
+                </div>
+                <div class="card-source">来源：yantai.gov.cn</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="country-tag country-cn">中国</span>
+                        <span class="type-tag">📄 官方文件</span>
+                    </div>
+                    <span class="date">2026-03-23</span>
+                </div>
+                <div class="card-title">
+                    <a href="http://commerce.shandong.gov.cn/art/2026/3/23/art_250176_10365090.html" target="_blank">山东省商务厅 预警信息 联合国通过自动驾驶系统全球法规草案</a>
+                </div>
+                <div class="card-source">来源：commerce.shandong.gov.cn</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="country-tag country-cn">中国</span>
+                        <span class="type-tag">📄 官方文件</span>
+                    </div>
+                    <span class="date">2026-03-17</span>
+                </div>
+                <div class="card-title">
+                    <a href="http://www.caac.gov.cn/XWZX/MHYW/202512/t20251222_229506.html" target="_blank">民航局发布两项无人机强制性国家标准</a>
+                </div>
+                <div class="card-source">来源：caac.gov.cn</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="country-tag country-cn">中国</span>
+                        <span class="type-tag">📄 官方文件</span>
+                    </div>
+                    <span class="date">2026-03-05</span>
+                </div>
+                <div class="card-title">
+                    <a href="http://kjj.gz.gov.cn/xwlb/yw/content/post_10711839.html" target="_blank">广州市科学技术局网站</a>
+                </div>
+                <div class="card-source">来源：kjj.gz.gov.cn</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="country-tag country-cn">中国</span>
+                        <span class="type-tag">📄 官方文件</span>
+                    </div>
+                    <span class="date">2026-03-03</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://fairtrade.sww.sh.gov.cn/taa/action/Important_view?subCategory.id=2&news.id=14798" target="_blank">欧盟修订自动驾驶系统型式认证规则</a>
+                </div>
+                <div class="card-source">来源：fairtrade.sww.sh.gov.cn</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="country-tag country-cn">中国</span>
+                        <span class="type-tag">📄 官方文件</span>
+                    </div>
+                    <span class="date">2026-02-28</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://gxj.nantong.gov.cn/ntsjxw/bmwj/content/ea027a2f-66cf-4f9f-a987-029ef5884bbe.html" target="_blank">关于印发《南通市智能网联汽车道路测试和 示范应用管理实施细则（试行）》的通知 - 部门文件</a>
+                </div>
+                <div class="card-source">来源：gxj.nantong.gov.cn</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="country-tag country-cn">中国</span>
+                        <span class="type-tag">📄 官方文件</span>
+                    </div>
+                    <span class="date">2026-02-26</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://policy.mofcom.gov.cn/claw/opinionInfo.shtml?id=6772" target="_blank">公开征求《智能网联汽车自动驾驶系统安全要求》等五项强制性国家 ...</a>
+                </div>
+                <div class="card-source">来源：policy.mofcom.gov.cn</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="country-tag country-cn">中国</span>
+                        <span class="type-tag">📄 官方文件</span>
+                    </div>
+                    <span class="date">2026-02-14</span>
+                </div>
+                <div class="card-title">
+                    <a href="http://www.jiangmen.gov.cn/bmpd/jmsgxhzls/zcfgyjd/content/post_3445438.html" target="_blank">【媒体解读】广东出台14条举措布局“AI+交通” 未来两三年交通将迎来AI应用落地爆发期 六市试点智能网联汽车路测互认_政策解读_江门市供销合作联社</a>
+                </div>
+                <div class="card-source">来源：jiangmen.gov.cn</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="country-tag country-cn">中国</span>
+                        <span class="type-tag">📄 官方文件</span>
+                    </div>
+                    <span class="date">2026-02-04</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://sheitc.sh.gov.cn/dsxxjyzl/20260204/899ebd1108fc4271af362a433be901bb.html" target="_blank">【年度盘点】2025年上海智能网联新能源汽车产业发展十件大事</a>
+                </div>
+                <div class="card-source">来源：sheitc.sh.gov.cn</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="country-tag country-cn">中国</span>
+                        <span class="type-tag">📄 官方文件</span>
+                    </div>
+                    <span class="date">2026-01-28</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://std.samr.gov.cn/gb/search/gbDetailed?id=49FD1852CA74C31FE06397BE0A0A1304" target="_blank">国家标准 - 全国标准信息公共服务平台</a>
+                </div>
+                <div class="card-source">来源：std.samr.gov.cn</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="country-tag country-cn">中国</span>
+                        <span class="type-tag">📄 官方文件</span>
+                    </div>
+                    <span class="date">2026-01-28</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=F1D96EE9F6E84D109F1AC57BDF7A1412" target="_blank">GB/T 47025-2026 - 国家标准全文公开</a>
+                </div>
+                <div class="card-source">来源：openstd.samr.gov.cn</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="country-tag country-cn">中国</span>
+                        <span class="type-tag">📄 官方文件</span>
+                    </div>
+                    <span class="date">2026-01-14</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://www.sheitc.sh.gov.cn/cyfz/20260114/4144de4a013240ba8282558c09514639.html" target="_blank">上海市经济和信息化委员会上海市交通委员会上海市公安局 ...</a>
+                </div>
+                <div class="card-source">来源：sheitc.sh.gov.cn</div>
+            </div>
+
+            <div class="update-card" data-country="中国">
+                <div class="card-header">
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <span class="country-tag country-cn">中国</span>
+                        <span class="type-tag">📄 官方文件</span>
+                    </div>
+                    <span class="date">2026-01-13</span>
+                </div>
+                <div class="card-title">
+                    <a href="https://open.beijing.gov.cn/html//kfdt/sddt/2026/1/1768961988078.html" target="_blank">开放北京</a>
+                </div>
+                <div class="card-source">来源：open.beijing.gov.cn</div>
+            </div>
+
         </div>
         
-        <div class="update-list" id="update-list">
-            <!-- Policy cards will be inserted here -->
-        </div>
-        
-        <div class="last-update">
-            🔄 最后更新：2026-04-14 | 数据来源：工信部、交通部、NHTSA、欧盟等官方渠道
-        </div>
+        <footer>
+            <div>数据来源：中国政府网(gov.cn)、交通运输部(mot.gov.cn)、工信部(miit.gov.cn)、美国交通部(dot.gov)、NHTSA等</div>
+            <div class="last-update">最后更新：2026-04-13 15:02:00</div>
+        </footer>
     </div>
-
+    
     <script>
-        // Policy data - 外部化为JSON结构方便维护和自动化更新
-        // 如需自动更新，可替换为 fetch('data/policies.json')
-        const policies = [
-            // ========== 中国政策 ==========
-            {
-                country: "中国",
-                title: "工信部批准首批L3级自动驾驶车型准入许可",
-                url: "https://www.news.cn/tech/20260105/2126b790de364faa9f5e66cc927cb979/c.html",
-                source: "新华网",
-                date: "2025-12-15",
-                summary: "工信部公布首批L3级有条件自动驾驶车型准入许可，长安深蓝SL03、极狐阿尔法S6将在重庆、北京指定区域开展上路试点",
-                detail: "首批L3级自动驾驶准入许可是中国自动驾驶商业化的重要里程碑，标志着从测试阶段向规模化应用迈出关键一步。",
-                tags: ["L3", "准入", "试点"]
-            },
-            {
-                country: "中国",
-                title: "长安汽车获得国内首块L3专用号牌",
-                url: "https://www.news.cn/tech/20260105/2126b790de364faa9f5e66cc927cb979/c.html",
-                source: "新华网",
-                date: "2025-12-20",
-                summary: "长安深蓝SL03获得L3专用号牌\"渝AD0001Z\"，极狐汽车获得\"京AA0001Z\"，开启合规商用试点",
-                detail: "专用号牌的发放意味着L3级自动驾驶车辆可以在指定区域内合法上路，是政策落地的重要标志。",
-                tags: ["L3", "号牌", "试点"]
-            },
-            {
-                country: "中国",
-                title: "北京上海开放L3级自动驾驶试点路段",
-                url: "https://www.stcn.com/article/detail/3605550.html",
-                source: "证券时报",
-                date: "2025-12-01",
-                summary: "北京、上海相继开放部分路段供L3级自动驾驶车辆开展上路通行试点",
-                detail: "北京、上海作为先行试点城市，开放了城区快速路和高速公路供自动驾驶车辆测试。",
-                tags: ["L3", "试点"]
-            },
-            {
-                country: "中国",
-                title: "何小鹏两会建言：推动自动驾驶从L2直接到L4",
-                url: "https://finance.sina.com.cn/wm/2026-03-04/doc-inhpvaym0164073.shtml",
-                source: "新浪财经",
-                date: "2026-03-04",
-                summary: "建议在保持L2级安全监管稳定运行基础上，推动自动驾驶政策从L2向L4跨越，明确L4车辆注册通行管理体系",
-                detail: "全国人大代表何小鹏建议跳过L3中间阶段，直接推动L4自动驾驶落地，抢占全球竞争先机。",
-                tags: ["L3", "L4", "政策"]
-            },
-            {
-                country: "中国",
-                title: "雷军建议完善多方协同治理体系",
-                url: "https://xinwen.bjd.com.cn/content/s69accfe5e4b0687a289238f4.html",
-                source: "新京报",
-                date: "2026-03-08",
-                summary: "建议将L2级辅助驾驶\"脱手脱眼\"纳入交通违法处罚，明确L3/L4级智驾安全准则，强化车企宣传责任",
-                detail: "完善智能驾驶安全责任体系，明确车企、驾驶员、系统之间的责任边界。",
-                tags: ["L3", "L4", "责任"]
-            },
-            {
-                country: "中国",
-                title: "江苏省出台L4级无人驾驶装备商业示范应用指引",
-                url: "https://www.stcn.com/article/detail/3605550.html",
-                source: "证券时报",
-                date: "2025-11-01",
-                summary: "为L4级及以上、低速新型运载装备（如无人物流车、无人环卫车）的商业化运营提供规范",
-                detail: "江苏省率先出台L4级商业化运营规范，为无人驾驶装备的商业化应用提供政策依据。",
-                tags: ["L4", "试点", "标准"]
-            },
-            {
-                country: "中国",
-                title: "工信部《2025年汽车标准化工作要点》",
-                url: "https://www.miit.gov.cn/",
-                source: "工信部",
-                date: "2025-04-01",
-                summary: "推动自动驾驶设计运行条件、自动泊车等标准发布，加快自动驾驶系统安全要求强制性国家标准研制",
-                detail: "建立自动驾驶系统安全基线，推动组合驾驶辅助系统和自动紧急制动系统等强制性国家标准制定。",
-                tags: ["标准", "安全", "L3"]
-            },
-            {
-                country: "中国",
-                title: "2025城市NOA汽车辅助驾驶研究报告",
-                url: "https://www.stcn.com/article/detail/3605550.html",
-                source: "证券时报",
-                date: "2026-01-22",
-                summary: "L2级辅助驾驶渗透率达64%，城市NOA功能累计销量321.9万辆，占乘用车15.1%",
-                detail: "Momenta和华为占据第三方城市NOA供应商市场约八成份额，百度、元戎启行等积极布局。",
-                tags: ["标准", "数据"]
-            },
-            
-            // ========== 美国政策 ==========
-            {
-                country: "美国",
-                title: "NHTSA发布自动驾驶安全框架声明",
-                url: "https://saferoads.org/2025-nhtsa-av-framework-statement/",
-                source: "SafeRoads",
-                date: "2025-08-15",
-                summary: "NHTSA发布新自动驾驶框架声明，更新安全标准和监管指南",
-                detail: "特朗普政府交通部长Sean Duffy推进AV框架现代化，更新安全标准以适应新技术发展。",
-                tags: ["标准", "安全"]
-            },
-            {
-                country: "美国",
-                title: "美国国会推进SELF DRIVE Act法案",
-                url: "https://www.foxnews.com/politics/congress-moves-set-national-rules-self-driving-cars-overriding-states",
-                source: "Fox News",
-                date: "2026-02-10",
-                summary: "众议院委员会通过SELF DRIVE Act，设立联邦安全标准，优先于州法规",
-                detail: "联邦层面统一法规，取代各州分散的自动驾驶法律，为自动驾驶规模化部署扫清障碍。",
-                tags: ["标准", "立法"]
-            },
-            {
-                country: "美国",
-                title: "USDOT发布自动驾驶汽车活动汇总",
-                url: "https://www.transportation.gov/AV",
-                source: "USDOT",
-                date: "2025-09-01",
-                summary: "交通部发布自动驾驶汽车活动汇总，涵盖联邦层面的政策和研究",
-                detail: "汇总美国交通部在自动驾驶领域的政策动向、研究项目和监管举措。",
-                tags: ["标准", "政策"]
-            },
-            {
-                country: "美国",
-                title: "NCSL公布各州自动驾驶立法情况",
-                url: "https://www.ncsl.org/transportation/autonomous-vehicles",
-                source: "NCSL",
-                date: "2025-07-20",
-                summary: "汇总美国各州已颁布的自动驾驶相关法规",
-                detail: "截至目前，美国已有超过20个州通过了自动驾驶相关法规，州级立法活跃。",
-                tags: ["立法", "标准"]
-            },
-            {
-                country: "美国",
-                title: "加州监管机构确认特斯拉未运营自动驾驶服务",
-                url: "https://electrek.co/2026/03/25/california-regulator-confirms-tesla-not-operating-autonomous-vehicle-service/",
-                source: "Electrek",
-                date: "2026-03-25",
-                summary: "加州监管机构确认特斯拉未运营自动驾驶服务，需符合相关法规",
-                detail: "加州DMV确认特斯拉的FSD仍为L2级辅助驾驶，不能作为自动驾驶服务运营。",
-                tags: ["责任", "监管"]
-            },
-            
-            // ========== 欧洲政策 ==========
-            {
-                country: "欧洲",
-                title: "欧盟自动驾驶法规框架",
-                url: "https://www.taylorwessing.com/en/insights-and-events/insights/2026/02/legal-frameworks-for-autonomous-driving-and-teledriving",
-                source: "Taylor Wessing",
-                date: "2026-02-01",
-                summary: "欧盟发布自动驾驶和远程驾驶法律框架，为成员国的自动驾驶法规提供指导",
-                detail: "欧盟委员会发布统一法规框架，协调成员国自动驾驶法规差异。",
-                tags: ["标准", "立法"]
-            },
-            {
-                country: "欧洲",
-                title: "欧洲自动驾驶法规与政策汇总",
-                url: "https://www.connectedautomateddriving.eu/regulation-and-policies/",
-                source: "CAD",
-                date: "2025-11-15",
-                summary: "欧洲自动驾驶法规和政策汇总，涵盖UNECE法规和各国政策",
-                detail: "汇总欧盟及成员国在UNECE框架下的自动驾驶法规协调进展。",
-                tags: ["标准", "政策"]
-            },
-            {
-                country: "欧洲",
-                title: "德国自动驾驶法规更新",
-                url: "https://www.bmvi.de/EN/Topics/Mobility/AutomatedDriving/",
-                source: "BMVI",
-                date: "2025-06-01",
-                summary: "德国更新自动驾驶法规，允许在特定条件下使用自动驾驶功能",
-                detail: "德国是欧洲自动驾驶法规最完善的国家之一，允许L3级在特定场景下使用。",
-                tags: ["标准", "试点"]
-            }
-        ];
-
-        // Initialize
-        let currentFilter = 'all';
-        let currentTag = null;
-        let searchQuery = '';
-
-        // Render timeline
-        function renderTimeline() {
-            const timeline = document.getElementById('timeline');
-            const sorted = [...policies].sort((a, b) => new Date(b.date) - new Date(a.date));
-            const uniqueDates = [...new Set(sorted.map(p => p.date))].slice(0, 6);
-            
-            timeline.innerHTML = uniqueDates.map(date => {
-                const policy = sorted.find(p => p.date === date);
-                const countryFlag = policy.country === '中国' ? '🇨🇳' : policy.country === '美国' ? '🇺🇸' : '🇪🇺';
-                return `
-                    <div class="timeline-item">
-                        <div class="timeline-date">${date}</div>
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-label">${countryFlag} ${policy.title.slice(0, 15)}...</div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function renderPolicies() {
-            const list = document.getElementById('update-list');
-            const filtered = policies.filter(p => {
-                const matchCountry = currentFilter === 'all' || p.country === currentFilter;
-                const matchTag = !currentTag || p.tags.some(t => t.includes(currentTag));
-                const matchSearch = !searchQuery || 
-                    p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                    p.summary.toLowerCase().includes(searchQuery.toLowerCase());
-                return matchCountry && matchTag && matchSearch;
-            });
-
-            // Update counts
-            document.getElementById('total-count').textContent = policies.length;
-            document.getElementById('cn-count').textContent = policies.filter(p => p.country === '中国').length;
-            document.getElementById('us-count').textContent = policies.filter(p => p.country === '美国').length;
-            document.getElementById('eu-count').textContent = policies.filter(p => p.country === '欧洲').length;
-
-            if (filtered.length === 0) {
-                list.innerHTML = `
-                    <div class="empty-state">
-                        <div class="empty-state-icon">🚗💨</div>
-                        <div class="empty-state-title">数据采集中</div>
-                        <div class="empty-state-text">自动驾驶政策正在来的路上，敬请期待～</div>
-                    </div>
-                `;
-                return;
-            }
-
-            list.innerHTML = filtered.map((p, idx) => {
-                const countryClass = p.country === '中国' ? 'country-cn' : p.country === '美国' ? 'country-us' : 'country-eu';
-                const tagHtml = p.tags.map(t => {
-                    let tagClass = 'tag-l3';
-                    if (t.includes('L4')) tagClass = 'tag-l4';
-                    else if (t.includes('责任')) tagClass = 'tag-liability';
-                    else if (t.includes('数据')) tagClass = 'tag-data';
-                    else if (t.includes('标准')) tagClass = 'tag-standard';
-                    else if (t.includes('试点')) tagClass = 'tag-pilot';
-                    return `<span class="card-tag ${tagClass}">#${t}</span>`;
-                }).join('');
-
-                return `
-                    <div class="update-card" onclick="toggleDetail('card-${idx}')">
-                        <div class="card-header">
-                            <div class="card-header-left">
-                                <span class="country-tag ${countryClass}">${p.country}</span>
-                                <div class="card-tags">${tagHtml}</div>
-                            </div>
-                        </div>
-                        <div class="card-title">${p.title}</div>
-                        <div class="card-summary">${p.summary}</div>
-                        <div class="card-detail" id="card-${idx}">
-                            <div class="card-detail-title">📋 政策详情</div>
-                            <div class="card-detail-content">${p.detail}</div>
-                        </div>
-                        <div class="card-meta">
-                            <span>📰 <a href="${p.url}" target="_blank">${p.source}</a></span>
-                            <span>📅 ${p.date}</span>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function toggleDetail(id) {
-            const el = document.getElementById(id);
-            el.classList.toggle('show');
-        }
-
-        // Event listeners
-        document.querySelectorAll('.filter-btn').forEach(btn => {
+        const buttons = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.update-card');
+        
+        buttons.forEach(btn => {
             btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                buttons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                currentFilter = btn.dataset.filter;
-                renderPolicies();
+                
+                const filter = btn.dataset.filter;
+                cards.forEach(card => {
+                    if (filter === 'all' || card.dataset.country === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
             });
         });
-
-        document.querySelectorAll('.tag').forEach(tag => {
-            tag.addEventListener('click', () => {
-                const tagValue = tag.dataset.tag;
-                if (currentTag === tagValue) {
-                    currentTag = null;
-                    tag.classList.remove('active');
-                } else {
-                    document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
-                    tag.classList.add('active');
-                    currentTag = tagValue;
-                }
-                renderPolicies();
-            });
-        });
-
-        document.getElementById('search-input').addEventListener('input', (e) => {
-            searchQuery = e.target.value;
-            renderPolicies();
-        });
-
-        // Initial render
-        renderTimeline();
-        renderPolicies();
     </script>
 </body>
 </html>
