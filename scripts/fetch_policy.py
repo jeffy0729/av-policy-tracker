@@ -238,6 +238,15 @@ def extract_domain(url):
     except:
         return "unknown"
 
+def extract_domain(url):
+    """提取域名"""
+    try:
+        from urllib.parse import urlparse
+        domain = urlparse(url).netloc
+        return domain.replace("www.", "")
+    except:
+        return "unknown"
+
 def generate_html(updates):
     """生成HTML页面"""
     cn_count = sum(1 for u in updates if u['country'] == '中国')
