@@ -8,16 +8,23 @@
   },
   {
     "country": "中国",
-    "source": "std.samr.gov.cn",
-    "url": "https://std.samr.gov.cn/gb/search/gbDetailed?id=3B34BF4A4DA2EAEDE06397BE0A0A9962",
-    "title": "汽车转向系基本要求 - 全国标准信息公共服务平台",
-    "date": "2026-07-01"
-  },
-  {
-    "country": "中国",
     "source": "ordos.gov.cn",
     "url": "https://www.ordos.gov.cn/xw_127672/jreeds/202606/t20260605_3901474.html",
     "title": "智能网联重卡跑出“鄂尔多斯模式”_鄂尔多斯市人民政府",
+    "date": "2026-06-05"
+  },
+  {
+    "country": "中国",
+    "source": "kjj.gz.gov.cn",
+    "url": "http://kjj.gz.gov.cn",
+    "title": "广州市科学技术局网站",
+    "date": "2026-06-05"
+  },
+  {
+    "country": "中国",
+    "source": "kjj.gz.gov.cn",
+    "url": "http://kjj.gz.gov.cn/xwlb/yw/content/post_10843195.html",
+    "title": "广州市科学技术局网站",
     "date": "2026-06-05"
   },
   {
@@ -29,16 +36,16 @@
   },
   {
     "country": "中国",
-    "source": "kfqgw.beijing.gov.cn",
-    "url": "https://kfqgw.beijing.gov.cn/zwgkkfq/2024zcwj/202605/t20260529_4671531.html",
-    "title": "北京市智慧城市基础设施与智能网联汽车协同发展工作办公室关于 ...",
+    "source": "jjxxw.cq.gov.cn",
+    "url": "https://jjxxw.cq.gov.cn/zwgk_213/zcjd/wzjd",
+    "title": "文字解读- 重庆市经济和信息化委员会",
     "date": "2026-05-29"
   },
   {
     "country": "中国",
-    "source": "jjxxw.cq.gov.cn",
-    "url": "https://jjxxw.cq.gov.cn/zwgk_213/zcjd/wzjd",
-    "title": "文字解读- 重庆市经济和信息化委员会",
+    "source": "kfqgw.beijing.gov.cn",
+    "url": "https://kfqgw.beijing.gov.cn/zwgkkfq/2024zcwj/202605/t20260529_4671531.html",
+    "title": "北京市智慧城市基础设施与智能网联汽车协同发展工作办公室关于 ...",
     "date": "2026-05-29"
   },
   {
@@ -52,29 +59,8 @@
     "country": "中国",
     "source": "xa.gov.cn",
     "url": "https://www.xa.gov.cn/gk/zcfg/szfbgtwj/2053665654354518018.html",
-    "title": "西安市人民政府办公厅关于<br/>印发促进智能网联新能源汽车产业链高质量发展实施方案的通知-西安市人民政府",
-    "date": "2026-05-11"
-  },
-  {
-    "country": "中国",
-    "source": "xa.gov.cn",
-    "url": "https://www.xa.gov.cn/gk/zcfg/szfbgtwj/2053665654354518018.html",
     "title": "西安市人民政府办公厅关于印发促进智能网联新能源汽车产业链高 ...",
     "date": "2026-05-11"
-  },
-  {
-    "country": "中国",
-    "source": "nanjing.gov.cn",
-    "url": "https://www.nanjing.gov.cn/zt/njjkdzznzzsjbydzyfzxzscl/zcjd",
-    "title": "中共南京市委 南京市人民政府",
-    "date": "2026-05-06"
-  },
-  {
-    "country": "中国",
-    "source": "nanjing.gov.cn",
-    "url": "https://www.nanjing.gov.cn/zt/njjkdzznzzsjbydzyfzxzscl/zcjd",
-    "title": "中共南京市委南京市人民政府",
-    "date": "2026-05-06"
   },
   {
     "country": "中国",
@@ -85,17 +71,24 @@
   },
   {
     "country": "中国",
-    "source": "jl.gov.cn",
-    "url": "https://www.jl.gov.cn/szfzt/tzcj/zdxm/qcjlbj/202604/t20260423_3626377.html",
-    "title": "长春市智能辅助驾驶产业园",
-    "date": "2026-04-23"
+    "source": "std.samr.gov.cn",
+    "url": "https://std.samr.gov.cn/gb/search/gbDetailed?id=42BD8BAE300A08A1E06397BE0A0AB162",
+    "title": "国家标准 - 全国标准信息公共服务平台",
+    "date": "2026-05-01"
   },
   {
     "country": "中国",
-    "source": "bjrd.gov.cn",
-    "url": "https://www.bjrd.gov.cn/xwzx/fzlt/202604/t20260422_4602055.html",
-    "title": "用法治统筹自动驾驶发展和安全_法治论坛_北京市人民代表大会常务委员会",
-    "date": "2026-04-22"
+    "source": "wuhai.gov.cn",
+    "url": "http://www.wuhai.gov.cn/wuhai/whyw75/whyw12/2425085/index.html",
+    "title": "自治区首个无人驾驶重卡跨盟市远程商业化试点在乌海落地",
+    "date": "2026-04-27"
+  },
+  {
+    "country": "中国",
+    "source": "std.samr.gov.cn",
+    "url": "https://std.samr.gov.cn/search/orgDetailView?data_id=2DEE8DF6A367EC36E06397BE0A0A94C3",
+    "title": "TC114/SC13 全国汽车标准化技术委员会挂车分技术委员会",
+    "date": "2026-04-24"
   },
   {
     "country": "中国",
@@ -106,9 +99,9 @@
   },
   {
     "country": "中国",
-    "source": "njqxq.gov.cn",
-    "url": "https://www.njqxq.gov.cn/qxzx/zwyw/202604/t20260422_5827907.html",
-    "title": "南京市栖霞区人民政府 孙海东率队赴北京开展产业对接",
+    "source": "bjrd.gov.cn",
+    "url": "https://www.bjrd.gov.cn/xwzx/fzlt/202604/t20260422_4602055.html",
+    "title": "用法治统筹自动驾驶发展和安全_法治论坛_北京市人民代表大会常务委员会",
     "date": "2026-04-22"
   },
   {
@@ -122,7 +115,7 @@
     "country": "中国",
     "source": "caac.gov.cn",
     "url": "http://www.caac.gov.cn/XXGK/XXGK/ZCJD/202112/t20211208_210451.html",
-    "title": "解读 |《机场无人驾驶设备应用路线图（2021-2025年）》",
+    "title": "解读|《机场无人驾驶设备应用路线图（2021-2025年）》",
     "date": "2026-04-17"
   },
   {
@@ -150,21 +143,14 @@
     "country": "中国",
     "source": "kw.beijing.gov.cn",
     "url": "https://kw.beijing.gov.cn/ztzl/2026zgclt/2026zgcltwdlt/2026zgcltcgfb/202603/t20260330_4569080.html",
-    "title": "智能驾驶保险将“上路”：北京率先启动专属保险开发应用",
+    "title": "智能驾驶保险将“上路”：北京率先启动专属保险开发应用_成果发布_北京市科学技术委员会、中关村科技园区管理委员会",
     "date": "2026-03-30"
-  },
-  {
-    "country": "中国",
-    "source": "beijing.gov.cn",
-    "url": "https://www.beijing.gov.cn/zhengce/dfxfg",
-    "title": "地方性法规_首都之窗_北京市人民政府门户网站",
-    "date": "2026-03-27"
   },
   {
     "country": "中国",
     "source": "yantai.gov.cn",
     "url": "https://www.yantai.gov.cn/col/col43370/art/2026/art_49a21d7eb8374c07bf56009d6b8bd29a.html?type=FUaRhQW7Lo9974tywtQmQ",
-    "title": "文字解读丨《烟台市低速自动驾驶装备道路测试与商业示范管理实施 ...",
+    "title": "文字解读丨《烟台市低速自动驾驶装备道路测试与商业示范管理实施细则（试行）》",
     "date": "2026-03-27"
   },
   {
@@ -183,6 +169,13 @@
   },
   {
     "country": "中国",
+    "source": "beijing.gov.cn",
+    "url": "https://www.beijing.gov.cn/zhengce/dfxfg",
+    "title": "地方性法规_首都之窗_北京市人民政府门户网站",
+    "date": "2026-03-27"
+  },
+  {
+    "country": "中国",
     "source": "policy.mofcom.gov.cn",
     "url": "https://policy.mofcom.gov.cn/claw/clawContent.shtml?id=105516",
     "title": "全球法规网-中国商务法规",
@@ -197,17 +190,10 @@
   },
   {
     "country": "中国",
-    "source": "hp.gov.cn",
-    "url": "https://www.hp.gov.cn/gzhptz/gkmlpt/content/10/10719/post_10719355.html",
-    "title": "广东破除体制机制障碍 推动科技成果加速落地（转载）",
-    "date": "2026-03-10"
-  },
-  {
-    "country": "中国",
-    "source": "rizhao.gov.cn",
-    "url": "http://www.rizhao.gov.cn/art/2026/3/9/art_312835_10548979.html",
-    "title": "日照市人民政府 部门解读 部门解读：《日照市低速无人车道路测试与商业示范管理实施细则（试行）》",
-    "date": "2026-03-09"
+    "source": "cq.gov.cn",
+    "url": "https://www.cq.gov.cn/zwgk/zfxxgkzl/fdzdgknr/ghxx/gmjjhshfzgh/202603/t20260313_15529123.html",
+    "title": "关于重庆市2025年国民经济和社会发展计划执行情况与2026年计划 ...",
+    "date": "2026-03-13"
   },
   {
     "country": "中国",
@@ -215,6 +201,20 @@
     "url": "https://www.court.gov.cn/zixun/xiangqing/492921.html",
     "title": "最高人民法院工作报告（全文）",
     "date": "2026-03-09"
+  },
+  {
+    "country": "中国",
+    "source": "m.12371.gov.cn",
+    "url": "https://m.12371.gov.cn/content/2026-03/08/content_507761.html",
+    "title": "智驭AI浪潮 共赴千里新程 -- 七一网",
+    "date": "2026-03-08"
+  },
+  {
+    "country": "中国",
+    "source": "nanjing.gov.cn",
+    "url": "https://www.nanjing.gov.cn/njxx/202603/t20260305_5800330.html",
+    "title": "构建数字基础底图，服务“车路云一体化” - 南京市人民政府",
+    "date": "2026-03-05"
   },
   {
     "country": "中国",
@@ -232,10 +232,10 @@
   },
   {
     "country": "中国",
-    "source": "gxj.nantong.gov.cn",
-    "url": "https://gxj.nantong.gov.cn/ntsjxw/jdhy/jdhy.html",
-    "title": "解读回应-南通市工业和信息化局",
-    "date": "2026-03-02"
+    "source": "cq.gov.cn",
+    "url": "http://www.cq.gov.cn/ywdt/zwhd/bmdt/202406/t20240612_13285608_wap.html",
+    "title": "数字交规仿真联合实验室在科学城成立 - 重庆市人民政府",
+    "date": "2026-03-04"
   },
   {
     "country": "中国",
@@ -247,8 +247,8 @@
   {
     "country": "中国",
     "source": "cq.gov.cn",
-    "url": "https://www.cq.gov.cn/ywdt/jrcq/202503/t20250319_14418464_wap.html",
-    "title": "汇聚超220家汽车软件企业，形成“车路云网图”全产业链汽车软件生态 重庆汽车软件产业加速布局",
+    "url": "http://www.cq.gov.cn/ywdt/jrcq/202512/t20251216_15247106_wap.html",
+    "title": "重庆智能网联汽车产业发展迎来关键突破全国首批！长安L3级自动 ...",
     "date": "2026-02-28"
   },
   {
@@ -256,13 +256,6 @@
     "source": "cq.gov.cn",
     "url": "http://www.cq.gov.cn/ywdt/jrcq/202512/t20251216_15247106_wap.html",
     "title": "重庆智能网联汽车产业发展迎来关键突破 全国首批！长安L3级自动驾驶车型获准入许可",
-    "date": "2026-02-28"
-  },
-  {
-    "country": "中国",
-    "source": "cq.gov.cn",
-    "url": "http://www.cq.gov.cn/ywdt/jrcq/202512/t20251216_15247106_wap.html",
-    "title": "重庆智能网联汽车产业发展迎来关键突破全国首批！长安L3级自动 ...",
     "date": "2026-02-28"
   },
   {
@@ -278,13 +271,6 @@
     "url": "http://fgw.fujian.gov.cn/ztzl/dgmsbgxhxfpyjhx/zcjd_62946/sj_63025",
     "title": "省级 _ 政策解读 _ 福建省发展和改革委员会",
     "date": "2026-02-26"
-  },
-  {
-    "country": "中国",
-    "source": "jxj.wuhan.gov.cn",
-    "url": "https://jxj.wuhan.gov.cn/ztzl/zthd/kpzs",
-    "title": "科普知识 - 武汉市经信局",
-    "date": "2026-02-24"
   },
   {
     "country": "中国",
@@ -323,6 +309,13 @@
   },
   {
     "country": "中国",
+    "source": "court.gov.cn",
+    "url": "https://www.court.gov.cn/zixun/xiangqing/489281.html",
+    "title": "最高人民法院首次发布道路交通安全刑事专题指导性案例",
+    "date": "2026-02-13"
+  },
+  {
+    "country": "中国",
     "source": "shanghai.chinatax.gov.cn",
     "url": "http://shanghai.chinatax.gov.cn/bsfw/nszx/hdfk/202602/t479413.html",
     "title": "购买新能源汽车的车辆购置税",
@@ -346,14 +339,7 @@
     "country": "中国",
     "source": "jiading.gov.cn",
     "url": "https://www.jiading.gov.cn/publicity/gg/zwgg__publicity/fdzdgknr/gg/zwgg/195024",
-    "title": "2025年度嘉定区智能网联新能源汽车产业政策拟支持企业名单公示_政务公告_公告_嘉定区人民政府办公室_上海市嘉定区人民政府",
-    "date": "2026-02-05"
-  },
-  {
-    "country": "中国",
-    "source": "jtw.sh.gov.cn",
-    "url": "https://jtw.sh.gov.cn/gsgg/20260205/d67eb13a45b24788ada3f167d71a66e6.html",
-    "title": "上海市智能网联汽车发展报告 （2025年度）",
+    "title": "2025年度嘉定区智能网联新能源汽车产业政策拟支持企业名单公示",
     "date": "2026-02-05"
   },
   {
@@ -362,13 +348,6 @@
     "url": "https://sheitc.sh.gov.cn/dsxxjyzl/20260204/899ebd1108fc4271af362a433be901bb.html",
     "title": "【年度盘点】2025年上海智能网联新能源汽车产业发展十件大事",
     "date": "2026-02-04"
-  },
-  {
-    "country": "中国",
-    "source": "spp.gov.cn",
-    "url": "https://www.spp.gov.cn/zdgz/202602/t20260202_717853.shtml",
-    "title": "2025年度十大法律监督案例 - 中华人民共和国最高人民检察院",
-    "date": "2026-02-02"
   },
   {
     "country": "中国",
@@ -395,14 +374,14 @@
     "country": "中国",
     "source": "shanwei.gov.cn",
     "url": "https://www.shanwei.gov.cn/swsgxj/gkmlpt/policy",
-    "title": "汕尾市工业和信息化局政府信息公开平台",
+    "title": "汕尾市工业和信息化局政府信息公开平台 - 汕尾市人民政府",
     "date": "2026-01-30"
   },
   {
     "country": "中国",
     "source": "std.samr.gov.cn",
     "url": "https://std.samr.gov.cn/gb/search/gbDetailed?id=49FD1852CA6DC31FE06397BE0A0A1304",
-    "title": "国家标准- 全国标准信息公共服务平台",
+    "title": "国家标准 - 全国标准信息公共服务平台",
     "date": "2026-01-28"
   },
   {
@@ -411,6 +390,13 @@
     "url": "https://jjxxw.cq.gov.cn/zwgk_213/zcjd/tpjd/index_2.html",
     "title": "图片解读 - 重庆市经济和信息化委员会",
     "date": "2026-01-28"
+  },
+  {
+    "country": "中国",
+    "source": "cq.gov.cn",
+    "url": "https://www.cq.gov.cn/zt/jj2026zqlh/dbwysy/202601/t20260127_15355474.html",
+    "title": "褚文博：推动科技、产业、人才深度联动 助力数字城市建设_重庆市人民政府网",
+    "date": "2026-01-27"
   },
   {
     "country": "中国",
@@ -428,17 +414,24 @@
   },
   {
     "country": "中国",
+    "source": "jnbusiness.jinan.gov.cn",
+    "url": "http://jnbusiness.jinan.gov.cn/col122001/art/2026/art_122001_4785921.html",
+    "title": "部门解读 《2026年济南市汽车报废更新补贴实施细则》《2026年济南市汽车置换更新补贴实施细则》",
+    "date": "2026-01-26"
+  },
+  {
+    "country": "中国",
+    "source": "beijing.gov.cn",
+    "url": "http://www.beijing.gov.cn/so/zcdh/gongbao/zfgbIndex?periodsNumber=926&yearsNumber=2026&redirect=1",
+    "title": "北京市政府公报2026第2期（总第926期）_历史公报_首都之窗_北京市人民政府门户网站",
+    "date": "2026-01-22"
+  },
+  {
+    "country": "中国",
     "source": "ncsti.gov.cn",
     "url": "https://www.ncsti.gov.cn/kjdt/yqdy/yqdt/202601/t20260120_235933.html",
     "title": "蘑菇车联入选2025科创独角兽100强引领自动驾驶巴士全球化落地",
     "date": "2026-01-20"
-  },
-  {
-    "country": "中国",
-    "source": "gxt.fujian.gov.cn",
-    "url": "https://gxt.fujian.gov.cn/zwgk/xw/hydt/xydt/202601/t20260112_7073867.htm",
-    "title": "汽车行业数字化转型提速 _ 国内行业动态 _ 省工信厅",
-    "date": "2026-01-12"
   },
   {
     "country": "中国",
@@ -456,13 +449,6 @@
   },
   {
     "country": "中国",
-    "source": "jtt.shandong.gov.cn",
-    "url": "https://jtt.shandong.gov.cn/col/col100450/index.html?vc_xxgkarea=113700000045046442",
-    "title": "山东省交通运输厅政府信息公开目录",
-    "date": "2026-01-08"
-  },
-  {
-    "country": "中国",
     "source": "zjic.zj.gov.cn",
     "url": "https://zjic.zj.gov.cn/ywdh/cyfz/202601/t20260105_23888726.shtml",
     "title": "浙江省经济信息中心",
@@ -470,9 +456,9 @@
   },
   {
     "country": "中国",
-    "source": "sasac.gov.cn",
-    "url": "http://www.sasac.gov.cn/n4470048/n32559362/n35167919/n35167924/n35167969/c35259858/content.html",
-    "title": "车路云一体化交通环境感知与数字孪生系统－国务院国有资产监督管理委员会",
+    "source": "zs.gov.cn",
+    "url": "http://www.zs.gov.cn/gxj/wgk/index.html",
+    "title": "五公开 - 中山市工业和信息化局",
     "date": "2026-01-05"
   },
   {
@@ -484,16 +470,9 @@
   },
   {
     "country": "中国",
-    "source": "gxt.shandong.gov.cn",
-    "url": "http://gxt.shandong.gov.cn/art/2026/1/4/art_103894_10355176.html?xxgkhide=1",
-    "title": "山东省工业和信息化厅 年度计划 山东省汽车行业稳增长工作方案",
-    "date": "2026-01-04"
-  },
-  {
-    "country": "中国",
-    "source": "hunan.gov.cn",
-    "url": "https://hunan.gov.cn/topic/jdz2026/jdzqnl2026/202601/t20260119_idea1110117353.html",
-    "title": "开展自动驾驶在特定场景的商业化试点-湖南省人民政府门户网站",
+    "source": "gz.gov.cn",
+    "url": "https://www.gz.gov.cn/gfxwj/qjgfxwj/hdq/qfb/content/post_10619384.html",
+    "title": "广州市花都区人民政府办公室关于印发花都区促进新能源汽车与智能网联汽车产业高质量发展若干措施的通知 - 广州市人民政府门户网站",
     "date": "2025-12-31"
   },
   {
@@ -501,13 +480,6 @@
     "source": "gz.gov.cn",
     "url": "https://www.gz.gov.cn/gfxwj/qjgfxwj/hdq/qfb/content/post_10619384.html",
     "title": "花都区促进新能源汽车与智能网联汽车 - 广州市政府",
-    "date": "2025-12-31"
-  },
-  {
-    "country": "中国",
-    "source": "fgw.fujian.gov.cn",
-    "url": "http://fgw.fujian.gov.cn/ztzl/dgmsbgxhxfpyjhx/jzqk/202512/t20251231_7069887.htm",
-    "title": "2026年汽车“国补”细则来了→ _ 进展情况 _ 福建省发展和改革委员会",
     "date": "2025-12-31"
   },
   {
@@ -522,6 +494,13 @@
     "source": "shanghai.gov.cn",
     "url": "https://www.shanghai.gov.cn/nw12344/20251231/18b207956b4e43e299ea407d223122f9.html",
     "title": "上海市人民政府办公厅关于转发市发展改革委等五部门制订的《上海 ...",
+    "date": "2025-12-31"
+  },
+  {
+    "country": "中国",
+    "source": "fgw.fujian.gov.cn",
+    "url": "http://fgw.fujian.gov.cn/ztzl/dgmsbgxhxfpyjhx/jzqk/202512/t20251231_7069887.htm",
+    "title": "2026年汽车“国补”细则来了→ _ 进展情况 _ 福建省发展和改革委员会",
     "date": "2025-12-31"
   },
   {
@@ -542,7 +521,7 @@
     "country": "中国",
     "source": "huadu.gov.cn",
     "url": "https://www.huadu.gov.cn/gkmlpt/content/10/10619/post_10619543.html",
-    "title": "（视频、音频、图文解读）《花都区促进新能源汽车与智能网联汽车产业高质量发展若干措施》的政策解读",
+    "title": "音频、图文解读）《花都区促进新能源汽车与智能网联汽车产业高 ...",
     "date": "2025-12-29"
   },
   {
@@ -556,14 +535,21 @@
     "country": "中国",
     "source": "cq.gov.cn",
     "url": "https://www.cq.gov.cn/ywdt/jrcq/202512/t20251227_15274775.html",
-    "title": "46辆中国首批L3级自动驾驶汽车重庆上路_重庆市人民政府网",
+    "title": "46辆中国首批L3级自动驾驶汽车重庆上路",
     "date": "2025-12-27"
   },
   {
     "country": "中国",
     "source": "cq.gov.cn",
     "url": "https://www.cq.gov.cn/ywdt/jrcq/202512/t20251227_15274775.html",
-    "title": "46辆中国首批L3级自动驾驶汽车重庆上路",
+    "title": "46辆中国首批L3级自动驾驶汽车重庆上路_重庆市人民政府网",
+    "date": "2025-12-27"
+  },
+  {
+    "country": "中国",
+    "source": "caac.gov.cn",
+    "url": "http://www.caac.gov.cn/PHONE/XWZX/MHYW/202512/t20251227_229595.html",
+    "title": "新修订的民用航空法自2026年7月1日起施行",
     "date": "2025-12-27"
   },
   {
@@ -596,17 +582,24 @@
   },
   {
     "country": "中国",
-    "source": "m.12371.gov.cn",
-    "url": "https://m.12371.gov.cn/content/2025-12/22/content_504460.html",
-    "title": "L3落户重庆，将产生何种鲶鱼效应 - 七一客户端",
-    "date": "2025-12-22"
+    "source": "jxj.beijing.gov.cn",
+    "url": "https://jxj.beijing.gov.cn/ztzl/ywzt/lqjs/kfdt/202512/t20251224_4359734.html",
+    "title": "自动驾驶加速“量产应用” 北京车企率先试点L3级上路丨北京经济新航标",
+    "date": "2025-12-20"
   },
   {
     "country": "中国",
-    "source": "jxj.beijing.gov.cn",
-    "url": "https://jxj.beijing.gov.cn/ztzl/ywzt/lqjs/kfdt/202512/t20251224_4359734.html",
-    "title": "自动驾驶加速“量产应用” 北京车企率先试点L3级上路丨北京经济新航标_开放动态_北京市经济和信息化局",
-    "date": "2025-12-20"
+    "source": "zx.zxy.hunanzx.gov.cn",
+    "url": "http://zx.zxy.hunanzx.gov.cn/szxapp/1/180/content_1107871.html",
+    "title": "ֳͻ׼ L3ԶʻģػжԶ",
+    "date": "2025-12-19"
+  },
+  {
+    "country": "中国",
+    "source": "gxt.fujian.gov.cn",
+    "url": "https://gxt.fujian.gov.cn/zwgk/xw/hydt/xydt/202512/t20251218_7047796.htm",
+    "title": "我国首批L3级自动驾驶车型获准上路 试点应用开启商业化探索新阶段 _ 国内行业动态 _ 省工信厅",
+    "date": "2025-12-18"
   },
   {
     "country": "中国",
@@ -635,13 +628,6 @@
     "url": "https://gxt.fujian.gov.cn/zwgk/xw/hydt/xydt/202512/t20251216_7046724.htm",
     "title": "两款L3级自动驾驶车型产品获工信部许可即将开展上路通行试点",
     "date": "2025-12-16"
-  },
-  {
-    "country": "中国",
-    "source": "policy.mofcom.gov.cn",
-    "url": "https://policy.mofcom.gov.cn/claw/clawContent.shtml?id=104509",
-    "title": "全球法规网-中国商务法规",
-    "date": "2025-12-09"
   },
   {
     "country": "中国",
